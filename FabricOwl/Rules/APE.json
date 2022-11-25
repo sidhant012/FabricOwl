@@ -1,0 +1,127 @@
+[
+  {
+    "eventType": "NodeDown",
+    "propertyMappings": [
+      {
+        "sourceProperty": "NodeName",
+        "targetProperty": "NodeName"
+      },
+      {
+        "sourceProperty": "NodeInstance",
+        "targetProperty": "NodeInstance"
+      }
+    ]
+  },
+  {
+    "eventType": "self",
+    "propertyMappings": [
+      {
+        "sourceProperty": "ExitCode",
+        "targetProperty": "7147"
+      },
+      {
+        "sourceProperty": "ExitReason",
+        "targetProperty": "Restarting the container because HEALTHCHECK for Docker container",
+        "sourceTransform": [
+          {
+            "type": "trimFront",
+            "value": ". "
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          },
+          {
+            "type": "trimBack",
+            "value": " ContainerName"
+          }
+        ]
+      }
+    ],
+    "result": "Expected Termination - restart due to configured container healthcheck failure."
+  },
+  {
+    "eventType": "self",
+    "propertyMappings": [
+      {
+        "sourceProperty": "ExitCode",
+        "targetProperty": "7147"
+      }
+    ],
+    "selfTransform": [
+      {
+        "type": "trimFront",
+        "value": "."
+      },
+      {
+        "type": "trimBack",
+        "value": "For information"
+      },
+      {
+        "type": "trimBack",
+        "value": "ContainerName"
+      }
+    ]
+  },
+  {
+    "eventType": "self",
+    "propertyMappings": [
+      {
+        "sourceProperty": "ExitCode",
+        "targetProperty": "3221225786"
+      }
+    ],
+    "selfTransform": [
+      {
+        "type": "trimFront",
+        "value": "."
+      },
+      {
+        "type": "trimBack",
+        "value": "For information"
+      }
+    ]
+  },
+  {
+    "eventType": "self",
+    "propertyMappings": [
+      {
+        "sourceProperty": "ExitCode",
+        "targetProperty": "7148"
+      }
+    ],
+    "selfTransform": [
+      {
+        "type": "trimFront",
+        "value": "."
+      },
+      {
+        "type": "trimBack",
+        "value": "For information"
+      }
+    ]
+  },
+  {
+    "eventType": "self",
+    "propertyMappings": [
+      {
+        "sourceProperty": "UnexpectedTermination",
+        "targetProperty": "true"
+      }
+    ],
+    "selfTransform": [
+      {
+        "type": "trimFront",
+        "value": "."
+      },
+      {
+        "type": "trimBack",
+        "value": "For information"
+      },
+      {
+        "type": "prefix",
+        "value": "Unexpected Termination - "
+      }
+    ]
+  }
+]
