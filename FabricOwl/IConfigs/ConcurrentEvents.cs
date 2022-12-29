@@ -15,6 +15,6 @@ namespace FabricOwl.IConfigs
         public string ReasonForEvent { get; set; } // reason for the current event
 
         [JsonProperty("inputEvent")]
-        public dynamic InputEvent { get; set; } //the event that is currently being looked at for analysis
+        public CombinedSFItems InputEvent { get; set; } //the event that is currently being looked at for analysis
     }
 }

@@ -51,7 +51,12 @@ namespace FabricOwl.Rules
 
 
             //this is RelatedEventsConfigs that you will insert the converted APE in its respective positions
-            string ESC = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ExportedRules.json");
+/*            string ESC = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ExportedRules.json");
+
+            var temp = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(ESC);
+
+            Console.WriteLine("Converted: " + JsonConvert.SerializeObject(temp,Formatting.Indented));*/
+
             string exportedStringConfig = @"[
               {
                 'eventType': 'ApplicationProcessExited',

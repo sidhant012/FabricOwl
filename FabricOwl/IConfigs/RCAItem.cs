@@ -17,6 +17,6 @@ namespace FabricOwl.IConfigs
         public string EventInstanceId { get; set; }
 
         [JsonProperty("timeStamp")]
-        public string TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }
