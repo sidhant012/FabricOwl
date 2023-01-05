@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using FabricOwl.IConfigs;
 using FabricOwl.Rules;
+using Microsoft.ServiceFabric.Client;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Threading;
 
 namespace FabricOwl
 {
@@ -16,6 +20,9 @@ namespace FabricOwl
          * Still ToDo
          *  - Need to add a better way to read in the data (the current implementation is for simplicity purposes to make sure everything is working) ---> Will use Get Requests to the EventStore to retrive data https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-index-eventsstore
          */
+
+        private static string apiVersion64 = "6.4";
+        private static string apiVersion60 = "6.0";
 
         public static void Main()
         {
@@ -81,6 +88,13 @@ namespace FabricOwl
                 Console.WriteLine(JsonConvert.SerializeObject(t, Formatting.Indented));
             }
 
+/*            // this is how we want to create the client create client 
+            var sfClient = new ServiceFabricClientBuilder()
+                            .UseEndpoints(new Uri(@"http://<cluster_fqdn>:19080"))
+                            .BuildAsync().GetAwaiter().GetResult();
+            sfClient.SendAsync();
+            sfClient.EventsStore.GetNodeEventListAsync();*/
+
         }
 
         public static List<CombinedSFItems> NodeToGenericItem(List<NodeItem> nodeEvents, List<CombinedSFItems> inputEvents)
@@ -124,6 +138,46 @@ namespace FabricOwl
             }
 
             return inputEvents;
+        }
+
+        public string GetApplicationsEventList()
+        {
+            // Get Request to return all Applications-related events. The response is list of ApplicationEvent objects.
+            // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationseventlist
+            var requestUri = new Uri($"/EventsStore/Applications/Events?api-version={apiVersion64}");
+            return GetEvents(requestUri);
+        }
+
+        public string GetNodesEventList()
+        {
+            // Get Request to return all Nodes-related events. The response is list of NodesEvent objects.
+            // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getnodeseventlist
+            var requestUri = new Uri($"/EventsStore/Nodes/Events?api-version={apiVersion64}");
+
+            return GetEvents(requestUri);
+        }
+
+        public string GetRepairTasksEventList()
+        {
+            //Get Request to return all RepairTasks events. The response is list of ReapirTasksEvent objects
+            //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getrepairtasklist
+            var requestUri = new Uri($"/$/GetRepairTaskList?api-version={apiVersion60}");
+
+            return GetEvents(requestUri);
+        }
+
+        public string GetEvents(Uri requestUri)
+        {
+            var request = WebRequest.Create(requestUri);
+            request.Method = "GET";
+
+            using var webResponse = request.GetResponse();
+            using var webStream = webResponse.GetResponseStream();
+
+            using var reader = new StreamReader(webStream);
+            string data = reader.ReadToEnd();
+
+            return data;
         }
     }
 }
