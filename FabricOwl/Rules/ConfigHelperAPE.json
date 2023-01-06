@@ -1,0 +1,27 @@
+{
+  "eventType": "self",
+  "propertyMappings": [
+    {
+      "sourceProperty": "ExitReason",
+      "targetProperty": "",
+      "sourceTransform": [
+        {
+          "type": "trimFront",
+          "value": ". "
+        },
+        {
+          "type": "trimBack",
+          "value": "For information"
+        },
+        {
+          "type": "trimBack",
+          "value": " ContainerName"
+        },
+        {
+          "type": "trimWhiteSpace"
+        }
+      ]
+    }
+  ],
+  "result": ""
+}

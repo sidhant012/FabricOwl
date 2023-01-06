@@ -1,13 +1,13 @@
 [
   {
     "eventType": "ApplicationProcessExited",
-    "relevantEventsType": "\"convertedBackAPE\"",
-    "result": "raw.ExitReason"
+    "relevantEventsType": "",
+    "result": "ExitReason"
   },
   {
     "eventType": "ApplicationContainerInstanceExited",
-    "relevantEventsType": "\"convertedBackAPE\"",
-    "result": "raw.ExitReason"
+    "relevantEventsType":"",
+    "result": "ExitReason"
   },
   {
     "eventType": "NodeDown",
@@ -16,12 +16,12 @@
         "eventType": "NodeDeactivateStarted",
         "propertyMappings": [
           {
-            "sourceProperty": "nodeName",
-            "targetProperty": "nodeName"
+            "sourceProperty": "NodeName",
+            "targetProperty": "NodeName"
           },
           {
-            "sourceProperty": "raw.NodeInstance",
-            "targetProperty": "raw.NodeInstance"
+            "sourceProperty": "NodeInstance",
+            "targetProperty": "NodeInstance"
           }
         ]
       }
@@ -35,8 +35,8 @@
         "eventType": "RepairTask",
         "propertyMappings": [
           {
-            "sourceProperty": "raw.BatchId",
-            "targetProperty": "raw.TaskId",
+            "sourceProperty": "BatchId",
+            "targetProperty": "TaskId",
             "sourceTransform": [
               {
                 "type": "trimFront",
@@ -53,7 +53,7 @@
     "eventType": "RepairTask",
     "relevantEventsType": [
     ],
-    "result": "raw.Action"
+    "result": "Action"
   },
   {
     "eventType": "PartitionReconfigurationStarted",
@@ -90,7 +90,7 @@
         "propertyMappings": [
           {
             "sourceProperty": "eventProperties.Description",
-            "targetProperty": "nodeName",
+            "targetProperty": "NodeName",
             "sourceTransform": [
               {
                 "type": "trimFront",
@@ -111,7 +111,7 @@
           },
           {
             "sourceProperty": "eventProperties.Description",
-            "targetProperty": "raw.NodeId",
+            "targetProperty": "NodeId",
             "sourceTransform": [
               {
                 "type": "trimFront",
@@ -159,12 +159,12 @@
         "eventType": "NodeDown",
         "propertyMappings": [
           {
-            "sourceProperty": "nodeName",
-            "targetProperty": "nodeName"
+            "sourceProperty": "NodeName",
+            "targetProperty": "NodeName"
           },
           {
-            "sourceProperty": "raw.NodeInstance",
-            "targetProperty": "raw.NodeInstance"
+            "sourceProperty": "NodeInstance",
+            "targetProperty": "NodeInstance"
           }
         ]
       }
