@@ -44,180 +44,34 @@ namespace FabricOwl.Rules
                 APEConvert = APEConvert.Concat(new[] { newConfig2 });
             }
 
-            //then probably need to serialize to add to the json string below
-            string convertedBackAPE = JsonConvert.SerializeObject(APEConvert, Formatting.Indented);
-
-            //Console.WriteLine("Converted: " + convertedBackAPE);
-
-
             //this is RelatedEventsConfigs that you will insert the converted APE in its respective positions
-/*            string ESC = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ExportedRules.json");
+            string rulesConfig = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ExportedRules.json");
 
-            var temp = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(ESC);
+            var rules = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(rulesConfig);
 
-            Console.WriteLine("Converted: " + JsonConvert.SerializeObject(temp,Formatting.Indented));*/
-
-            string exportedStringConfig = @"[
-              {
-                'eventType': 'ApplicationProcessExited',
-                'relevantEventsType': " + convertedBackAPE + "," +
-                "'result': 'ExitReason'," +
-              "}," +
-              "{" +
-                "'eventType': 'ApplicationContainerInstanceExited'," +
-                "'relevantEventsType': " + convertedBackAPE + "," +
-                "'result': 'ExitReason'," +
-              "}," +
-              "{" +
-                "'eventType': 'NodeDown'," +
-                "'relevantEventsType': [" +
-                  "{" +
-                    "'eventType': 'NodeDeactivateStarted'," +
-                    "'propertyMappings': [" +
-                      "{" +
-                        "'sourceProperty': 'NodeName'," +
-                        "'targetProperty': 'NodeName'" +
-                      "}," +
-                      "{" +
-                        "'sourceProperty': 'NodeInstance'," +
-                        "'targetProperty': 'NodeInstance'" +
-                      "}" +
-                    "]," +
-                  "}" +
-                "]," +
-                "'result': ''" +
-              "}," +
-              "{" +
-                "'eventType': 'NodeDeactivateStarted'," +
-                "'relevantEventsType': [" +
-                  "{" +
-                    "'eventType': 'RepairTask'," +
-                    "'propertyMappings': [" +
-                      "{" +
-                        "'sourceProperty': 'BatchId'," +
-                        "'targetProperty': 'TaskId'," +
-                        "'sourceTransform': [" +
-                          "{" +
-                            "'type': 'trimFront'," +
-                            "'value': '/'" +
-                          "}" +
-                        "]" +
-                      "}" +
-                    "]," +
-                  "}" +
-                "]," +
-                "'result': ''" +
-              "}," +
-              "{" +
-                "'eventType': 'RepairTask'," +
-                "'relevantEventsType': [" +
-                "]," +
-                "'result': 'Action'" +
-              "}," +
-              "{" +
-                "'eventType': 'PartitionReconfigurationStarted'," +
-                "'relevantEventsType': [" +
-                  "{" +
-                    "'eventType': 'PartitionReconfigured'," +
-                    "'propertyMappings': [" +
-                      "{" +
-                        "'sourceProperty': 'eventProperties.ActivityId'," +
-                        "'targetProperty': 'eventProperties.ActivityId'" +
-                      "}" +
-                    "]," +
-                  "}" +
-                "]," +
-                "'result': 'eventProperties.NewPrimaryNodeName'," +
-                "'resultTransform': [" +
-                  "{" +
-                    "'type': 'prefix'," +
-                    "'value': 'New Primary Node Name is '" +
-                  "}" +
-                "]" +
-              "}," +
-              "{" +
-                "'eventType': 'PartitionReconfigured'," +
-                "'relevantEventsType': [" +
-                "]," +
-                "'result': 'eventProperties.ReconfigType'" +
-              "}," +
-              "{" +
-                "'eventType': 'ClusterNewHealthReport'," +
-                "'relevantEventsType': [" +
-                  "{" +
-                    "'eventType': 'NodeDown'," +
-                    "'propertyMappings': [" +
-                      "{" +
-                        "'sourceProperty': 'eventProperties.Description'," +
-                        "'targetProperty': 'NodeName'," +
-                        "'sourceTransform': [" +
-                          "{" +
-                            "'type': 'trimFront'," +
-                            "'value': ':'" +
-                          "}," +
-                          "{" +
-                            "'type': 'trimFront'," +
-                            "'value': ':'" +
-                          "}," +
-                          "{" +
-                            "'type': 'trimBack'," +
-                            "'value': '('" +
-                          "}," +
-                          "{" +
-                            "'type': 'trimWhiteSpace'" +
-                          "}," +
-                        "]" +
-                      "}" +
-                    "]," +
-                  "}," +
-                "]," +
-                "'result': ''" +
-              "}" +
-            "]";
-
-            //Then you will convert this to IEnumerable<ConcurrentEventsConfig> and return it
-            var endConvertedConfig = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(exportedStringConfig);
-
-            //Console.WriteLine("Converted: " + JsonConvert.SerializeObject(endConvertedConfig,Formatting.Indented));
-
-            return endConvertedConfig;
+            foreach(var r in rules)
+            {
+                if(r.EventType == "ApplicationProcessExited" || r.EventType == "ApplicationContainerInstanceExited")
+                {
+                    r.RelevantEventsType = APEConvert;
+                }
+            }
+            return rules;
         }
         private static RelevantEventsConfig generateConfigHelper(string text, string intendedDescription, string expectedPrefix = "")
         {
             //this is generateConfig (the config that needs to be generated)
-            string tempGenerate = @"{
-                'eventType': 'self',
-                'propertyMappings': [
-                  {
-                    'sourceProperty': 'ExitReason',
-                    'targetProperty': '" + text + "'," +
-                    "'sourceTransform': [{" +
-                     "'type': 'trimFront'," +
-                     "'value': '.'" +
-                    "}," +
-                    "{" +
-                      "'type': 'trimBack'," +
-                      "'value': 'For information'" +
-                    "}," +
-                    "{" +
-                      "'type': 'trimBack'," +
-                      "'value': 'ContainerName'" +
-                    "}," +
-                    "{" +
-                      "'type': 'trimWhiteSpace'" +
-                    "}]" +
-                  "}" +
-                "]," +
-                "'result': 'Expected Termination " + expectedPrefix + " - " + intendedDescription + "'," +
-              "}";
+            string tempGenerate = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ConfigHelperAPE.json");
+            //string tempGenerate = File.ReadAllText("ConfigHelperAPE.json");
+            var generated = JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate);
 
-            //convert the tempGenerate to RelevantEventsConfig using JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate)
-            var generate = JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate);
+            foreach(var prop in generated.PropertyMappings)
+            {
+                prop.TargetProperty = text;
+            }
+            generated.Result = "Expected Termination " + expectedPrefix + " - " + intendedDescription;
 
-            //Console.WriteLine(generate.Result); *** REMOVE
-
-            //return the converted generated config
-            return generate;
+            return generated;
         }
     }
 }
