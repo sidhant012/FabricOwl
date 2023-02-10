@@ -86,9 +86,9 @@ namespace FabricOwl
                 foreach(var key in Plugins.Keys)
                 {
                     NodeData = Plugins[key].GetNodesEventList(startTimeUTC, endTimeUTC);
-                    //ApplicationData = Plugins[key].GetApplicationsEventList(startTimeUTC, endTimeUTC);
-                    //ClusterData = Plugins[key].GetClusterEventList(startTimeUTC, endTimeUTC);
-                    //RepairTaskData = Plugins[key].GetRepairTasksEventList();
+                    ApplicationData = Plugins[key].GetApplicationsEventList(startTimeUTC, endTimeUTC);
+                    ClusterData = Plugins[key].GetClusterEventList(startTimeUTC, endTimeUTC);
+                    RepairTaskData = Plugins[key].GetRepairTasksEventList();
                 }
             }
 
