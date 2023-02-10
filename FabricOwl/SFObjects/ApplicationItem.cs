@@ -1,12 +1,15 @@
-﻿using System;
+﻿using FabricOwl.IConfigs;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FabricOwl.IConfigs
+namespace FabricOwl.SFObjects
 {
-    public class ApplicationItem
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
+    public class ApplicationItem : ICommonSFItems
     {
         public string ServiceName { get; set; }
         public string ServicePackageName { get; set; }
@@ -44,6 +47,5 @@ namespace FabricOwl.IConfigs
         public string ImageName { get; set; }
         public string ContainerName { get; set; }
         public string DataType { get; set; } = "Application";
-
     }
 }

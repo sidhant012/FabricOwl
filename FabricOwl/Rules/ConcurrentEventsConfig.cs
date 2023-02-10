@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FabricOwl.IConfigs
+namespace FabricOwl.Rules
 {
     public class ConcurrentEventsConfig
     {

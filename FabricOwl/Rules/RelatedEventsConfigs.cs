@@ -1,5 +1,4 @@
-﻿using FabricOwl.IConfigs;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ namespace FabricOwl.Rules
         const string forceKillPrefix = "Aborting since deactivation failed. ";
 
         //this is the APE json
-        static string APE1 = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\APE.json");
+        static string APE1 = File.ReadAllText(@"..\..\..\Rules\APE.json");
 
         public static IEnumerable<ConcurrentEventsConfig> generateConfig()
         {
@@ -45,7 +44,7 @@ namespace FabricOwl.Rules
             }
 
             //this is RelatedEventsConfigs that you will insert the converted APE in its respective positions
-            string rulesConfig = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ExportedRules.json");
+            string rulesConfig = File.ReadAllText(@"..\..\..\Rules\ExportedRules.json");
 
             var rules = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(rulesConfig);
 
@@ -58,11 +57,17 @@ namespace FabricOwl.Rules
             }
             return rules;
         }
+
+        
+        public static IEnumerable<ConcurrentEventsConfig> additionalUserConfig()
+        {
+            return null;
+        }
+
         private static RelevantEventsConfig generateConfigHelper(string text, string intendedDescription, string expectedPrefix = "")
         {
             //this is generateConfig (the config that needs to be generated)
-            string tempGenerate = File.ReadAllText("C:\\Users\\sibhatia\\source\\repos\\FabricOwl\\FabricOwl\\Rules\\ConfigHelperAPE.json");
-            //string tempGenerate = File.ReadAllText("ConfigHelperAPE.json");
+            string tempGenerate = File.ReadAllText(@"..\..\..\Rules\ConfigHelperAPE.json");
             var generated = JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate);
 
             foreach(var prop in generated.PropertyMappings)
