@@ -1,4 +1,6 @@
 ﻿using FabricOwl.IConfigs;
+using FabricOwl.Rules;
+using FabricOwl.SFObjects;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -13,13 +15,13 @@ namespace FabricOwl
     public class RCAEngine
     {
         //Use this class to create the RCAEngine
-        public List<ConcurrentEvents> GetSimultaneousEventsForEvent
-            (IEnumerable<ConcurrentEventsConfig> configs, List<CombinedSFItems> inputEvents, List<CombinedSFItems> events, List<ConcurrentEvents> existingEvents = null)
+        public List<RCAEvents> GetSimultaneousEventsForEvent
+    (IEnumerable<ConcurrentEventsConfig> configs, List<ICommonSFItems> inputEvents, List<ICommonSFItems> events, List<RCAEvents>? existingEvents = null)
         {
             /*
                 Grab the events that occur concurrently with an inputted current event.
             */
-            List<ConcurrentEvents> simulEvents = new List<ConcurrentEvents>();
+            List<RCAEvents> simulEvents = new List<RCAEvents>();
 
             if (existingEvents != null)
             {
@@ -30,26 +32,26 @@ namespace FabricOwl
             // iterate through all the input events
             foreach (var inputEvent in inputEvents)
             {
-                if(FindEvent(simulEvents, inputEvent) != null)
+                if (FindEvent(simulEvents, inputEvent) != null)
                 {
                     continue;
                 }
 
                 var action = "";
                 var reasonForEvent = "";
-                ConcurrentEvents reason = null;
+                RCAEvents? reason = null;
                 var moreSpecificReason = "";
 
                 foreach (ConcurrentEventsConfig config in configs)
                 {
                     string parsed = "";
-                    if (config.EventType == inputEvent.Kind.ToString())
+                    if (config.EventType == inputEvent.Kind)
                     {
                         // iterate through all events to find relevant ones
-                        if(GetPropertyValues(inputEvent, config.Result) != null)
+                        if (GetPropertyValues(inputEvent, config.Result) != null)
                         {
-                            parsed = GetPropertyValues(inputEvent, config.Result);
-                            if(config.ResultTransform != null)
+                            parsed = (string)GetPropertyValues(inputEvent, config.Result);
+                            if (config.ResultTransform != null)
                             {
                                 parsed = Transformations.getTransformations(config.ResultTransform, parsed);
                             }
@@ -57,42 +59,42 @@ namespace FabricOwl
                         }
 
                         reasonForEvent = action;
-                        foreach(RelevantEventsConfig relevantEventType in config.RelevantEventsType)
+                        foreach (RelevantEventsConfig relevantEventType in config.RelevantEventsType)
                         {
-                            if(relevantEventType.EventType == "self")
+                            if (relevantEventType.EventType == "self")
                             { // self referential events logic starts here
                                 bool propMaps = true;
                                 var mappings = relevantEventType.PropertyMappings;
-                                foreach(var mapping in mappings)
+                                foreach (var mapping in mappings)
                                 {
-                                    object sourceVal = GetPropertyValues(inputEvent, (string)mapping.SourceProperty);
+                                    object sourceVal = GetPropertyValues(inputEvent, mapping.SourceProperty);
                                     object targetVal = mapping.TargetProperty;
 
-                                    if(mapping.SourceTransform != null)
+                                    if (mapping.SourceTransform != null)
                                     {
                                         sourceVal = Transformations.getTransformations(mapping.SourceTransform, (string)sourceVal);
                                     }
 
-                                    if(sourceVal == null || targetVal == null || sourceVal != targetVal)
+                                    if (sourceVal == null || targetVal == null || sourceVal != targetVal)
                                     {
                                         propMaps = false;
                                     }
                                 }
 
-                                if(propMaps)
+                                if (propMaps)
                                 {
-                                    if(relevantEventType.SelfTransform != null)
+                                    if (relevantEventType.SelfTransform != null)
                                     {
                                         parsed = Transformations.getTransformations(relevantEventType.SelfTransform, parsed);
                                     }
 
-                                    if(reason == null)
+                                    if (reason == null)
                                     {
                                         reason.Name = "self";
                                         reason.RelatedEvent = null;
                                     }
                                     action = parsed;
-                                    if(!string.IsNullOrEmpty(relevantEventType.Result))
+                                    if (!string.IsNullOrEmpty(relevantEventType.Result))
                                     {
                                         moreSpecificReason = relevantEventType.Result;
                                     }
@@ -100,28 +102,28 @@ namespace FabricOwl
                                     reasonForEvent = action;
                                 }
                             } //self referential events logic ends here
-                            foreach(var iterEvent in events) //iterate through other events to find relationships
+                            foreach (var iterEvent in events) //iterate through other events to find relationships
                             {
-                                if (relevantEventType.EventType == iterEvent.Kind.ToString())
+                                if (relevantEventType.EventType == iterEvent.Kind)
                                 {
                                     // see if each property mapping holds true
                                     bool valid = true;
                                     var mappings = relevantEventType.PropertyMappings;
                                     foreach (var mapping in mappings)
                                     {
-                                        var sourceVal = GetPropertyValues(inputEvent, (string)mapping.SourceProperty);
+                                        var sourceVal = GetPropertyValues(inputEvent, mapping.SourceProperty);
                                         if (mapping.SourceTransform != null)
                                         {
                                             sourceVal = Transformations.getTransformations(mapping.SourceTransform, (string)sourceVal);
                                         }
 
-                                        var targetVal = GetPropertyValues(iterEvent, (string)mapping.TargetProperty);
+                                        var targetVal = GetPropertyValues(iterEvent, mapping.TargetProperty);
                                         if (mapping.TargetTransform != null)
                                         {
                                             targetVal = Transformations.getTransformations(mapping.TargetTransform, (string)targetVal);
                                         }
 
-                                        if (sourceVal == null || targetVal == null || sourceVal != targetVal)
+                                        if (sourceVal == null || targetVal == null || !sourceVal.Equals(targetVal))
                                         {
                                             valid = false;
                                         }
@@ -137,8 +139,8 @@ namespace FabricOwl
                                         else
                                         {
                                             //generate events to build chain
-                                            var reasons = GetSimultaneousEventsForEvent(configs, new List<CombinedSFItems>{iterEvent }, events, simulEvents);
-                                            foreach (ConcurrentEvents r in reasons)
+                                            var reasons = GetSimultaneousEventsForEvent(configs, new List<ICommonSFItems> { iterEvent }, events, simulEvents);
+                                            foreach (RCAEvents r in reasons)
                                             {
                                                 if (FindEventReasons(simulEvents, r) == null)
                                                 {
@@ -156,30 +158,40 @@ namespace FabricOwl
 
                 //Create the tempEvent with all the input values
                 //Look into EventProperties , EventProperties = inputEvent.EventProperties
-                ConcurrentEvents tempEvent = new ConcurrentEvents() { Kind = inputEvent.Kind, Name = inputEvent.Name, RelatedEvent = reason, 
-                    ReasonForEvent = (string.IsNullOrEmpty(moreSpecificReason) ? reasonForEvent : moreSpecificReason), EventInstanceId = inputEvent.EventInstanceId, 
-                    TimeStamp = inputEvent.TimeStamp, InputEvent = inputEvent};
+                RCAEvents tempEvent = new RCAEvents()
+                {
+                    Kind = inputEvent.Kind,
+                    Name = (string)GetPropertyValues(inputEvent, "Name"),
+                    RelatedEvent = reason,
+                    ReasonForEvent = (string.IsNullOrEmpty(moreSpecificReason) ? reasonForEvent : moreSpecificReason),
+                    EventInstanceId = inputEvent.EventInstanceId,
+                    TimeStamp = inputEvent.TimeStamp,
+                    DataType = inputEvent.DataType,
+                    InputEvent = inputEvent
+                };
                 simulEvents.Add(tempEvent);
             }
             return simulEvents;
         }
 
-        private ConcurrentEvents FindEvent(List<ConcurrentEvents> events, CombinedSFItems tempEvent) {
-            return events.FirstOrDefault(e => e.EventInstanceId == tempEvent.EventInstanceId.ToString());
+        private RCAEvents FindEvent(List<RCAEvents> events, ICommonSFItems tempEvent)
+        {
+            return events.FirstOrDefault(e => e.EventInstanceId == tempEvent.EventInstanceId);
         }
 
-        private ConcurrentEvents FindEventReasons(List<ConcurrentEvents> events, ConcurrentEvents reason)
+        private RCAEvents FindEventReasons(List<RCAEvents> events, RCAEvents reason)
         {
-            return events.FirstOrDefault(e => e.EventInstanceId == reason.EventInstanceId.ToString());
+            return events.FirstOrDefault(e => e.EventInstanceId == reason.EventInstanceId);
         }
 
         //Rewrite the Utils.result method
-        public dynamic GetPropertyValues(CombinedSFItems src, string propName)
+        public object GetPropertyValues(ICommonSFItems src, string propName)
         {
+
             if (propName.Contains("."))//complex type nested
             {
                 var temp = propName.Split(new char[] { '.' }, 2);
-                return GetPropertyValues(GetPropertyValues(src, temp[0]), temp[1]);
+                return GetPropertyValues((ICommonSFItems)GetPropertyValues(src, temp[0]), temp[1]);
             }
             else
             {

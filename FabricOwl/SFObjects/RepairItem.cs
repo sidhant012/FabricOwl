@@ -1,13 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using FabricOwl.IConfigs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FabricOwl.IConfigs
+namespace FabricOwl.SFObjects
 {
-    public class RepairItem
+    public class RepairItem : ICommonSFItems
     {
         public Scope Scope { get; set; }
         public string Version { get; set; }
@@ -27,18 +28,12 @@ namespace FabricOwl.IConfigs
         public string RestoringHealthCheckState { get; set; }
         public string PerformPreparingHealthCheck { get; set; }
         public string PerformRestoringHealthCheck { get; set; }
-
         public string Kind { get; set; } = "RepairTask";
-
-        //[JsonProperty("TaskId")]
         public string EventInstanceId { get; set; }
-
         public string Name { get; set; } = "";
-
         public string DataType { get; set; } = "RepairTask";
-
         public string TaskId { get; set; }
-
+        public DateTime TimeStamp { get; set; }
     }
 
     public class History

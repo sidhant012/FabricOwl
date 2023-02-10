@@ -1,12 +1,15 @@
-﻿using System;
+﻿using FabricOwl.IConfigs;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FabricOwl.IConfigs
+namespace FabricOwl.SFObjects
 {
-    public class NodeItem
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
+    public class NodeItem : INodeItem
     {
         public string NodeInstanceId { get; set; }
         public string SourceId { get; set; }
@@ -40,6 +43,5 @@ namespace FabricOwl.IConfigs
         public string BatchId { get; set; }
         public string DeactivateIntent { get; set; }
         public string DataType { get; set; } = "Node";
-
     }
 }

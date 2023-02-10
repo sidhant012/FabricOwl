@@ -1,4 +1,4 @@
-﻿using FabricOwl.IConfigs;
+﻿using FabricOwl.Rules;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
