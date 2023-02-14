@@ -26,8 +26,8 @@ namespace FabricOwl
         private static Dictionary<string, IPlugin> Plugins = new Dictionary<string, IPlugin>();
         private static string PluginPath = @"..\..\..\..\Plugins";
 
-        private static string startTimeUTC = "2023-01-30T17:56:29Z";
-        private static string endTimeUTC = "2023-02-01T18:53:13Z";
+        private static string startTimeUTC = "2023-02-09T19:05:04Z";
+        private static string endTimeUTC = "2023-02-13T19:18:11Z";
         //Another clusterURL to use once you have security credentials https://winlrc-sfrp-01.eastus.cloudapp.azure.com:19080
 
         public static void Main()
@@ -71,6 +71,8 @@ namespace FabricOwl
                 }
             }
 
+            List<ICommonSFItems> inputEvents = new List<ICommonSFItems>();
+
             //If test is true then using test data otherwise using live cluster data
             if (test)
             {
@@ -80,31 +82,25 @@ namespace FabricOwl
                 RepairTaskData = File.ReadAllText(@"..\..\..\TestData\RepairTasksTestData.json");
                 ClusterData = File.ReadAllText(@"..\..\..\TestData\ClusterEventsTestData.json");
 
+                var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(NodeData);
+                var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(ApplicationData);
+                var RepairConvertEvents = JsonConvert.DeserializeObject<List<RepairItem>>(RepairTaskData);
+                var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(ClusterData);
+                RepairConvertEvents = SetRepairValues(RepairConvertEvents);
+
+                inputEvents.AddRange(NodeConvertEvents);
+                inputEvents.AddRange(ApplicationConvertEvents);
+                inputEvents.AddRange(RepairConvertEvents);
+                inputEvents.AddRange(ClusterConvertEvents);
+
             } else
             {
                 LoadPlugins();
-                foreach(var key in Plugins.Keys)
+                foreach (var key in Plugins.Keys)
                 {
-                    NodeData = Plugins[key].GetNodesEventList(startTimeUTC, endTimeUTC);
-                    ApplicationData = Plugins[key].GetApplicationsEventList(startTimeUTC, endTimeUTC);
-                    ClusterData = Plugins[key].GetClusterEventList(startTimeUTC, endTimeUTC);
-                    RepairTaskData = Plugins[key].GetRepairTasksEventList();
+                    inputEvents = Plugins[key].ReturnEvents(inputEvents, startTimeUTC, endTimeUTC);   
                 }
             }
-
-            var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(NodeData);
-            var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(ApplicationData);
-            var RepairConvertEvents = JsonConvert.DeserializeObject<List<RepairItem>>(RepairTaskData);
-            var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(ClusterData);
-            RepairConvertEvents = SetRepairValues(RepairConvertEvents);
-
-
-            //combining all the raw formatted data to a data type to be passed into the engine for RCA
-            List<ICommonSFItems> inputEvents = new List<ICommonSFItems>();
-            inputEvents.AddRange(NodeConvertEvents);
-            inputEvents.AddRange(ApplicationConvertEvents);
-            inputEvents.AddRange(RepairConvertEvents);
-            inputEvents.AddRange(ClusterConvertEvents);
 
             
             List<ICommonSFItems> filteredInputEvents = new List<ICommonSFItems>();
@@ -159,7 +155,6 @@ namespace FabricOwl
             {
                 AssemblyLoadContext assemblyLoadContext = new AssemblyLoadContext(dll);
                 Assembly assembly = assemblyLoadContext.LoadFromAssemblyPath(dll);
-                //var types = assembly.GetTypes();
                 for(int i = 0; i < assembly.GetTypes().Length; i++)
                 {
                     try
