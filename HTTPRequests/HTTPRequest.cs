@@ -9,6 +9,7 @@ namespace HTTPRequests
     {
         private string apiVersion64 = "6.4";
         private string apiVersion60 = "6.0";
+        private string apiVersion72 = "7.2";
         private string clusterURL = "http://localhost:19080";
         public List<ICommonSFItems> GetApplicationsEventList(List<ICommonSFItems> inputEvents, string startTimeUTC, string endTimeUTC)
         {
@@ -86,6 +87,26 @@ namespace HTTPRequests
             return inputEvents;
         }
 
+        public List<ICommonSFItems> GetPartitionsEventList(List<ICommonSFItems> inputEvents, string startTimeUTC, string endTimeUTC)
+        {
+            //Get Request to return all the Partition events. The response is list of ParitionEvent objects
+            //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionseventlist
+            var requestUri = new Uri($"{clusterURL}/EventsStore/Partitions/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
+
+            var PartitionConvertEvents = JsonConvert.DeserializeObject<List<PartitionItem>>(GetEvents(requestUri));
+            if (PartitionConvertEvents == null || PartitionConvertEvents.Count == 0)
+            {
+                return inputEvents;
+            }
+            else
+            {
+                inputEvents.AddRange(PartitionConvertEvents);
+            }
+
+
+            return inputEvents;
+        }
+
         public List<RepairItem> SetRepairValues(List<RepairItem> list)
         {
             foreach (var l in list)
@@ -125,6 +146,7 @@ namespace HTTPRequests
             inputEvents = GetApplicationsEventList(inputEvents, startTimeUTC, endTimeUTC);
             inputEvents = GetRepairTasksEventList(inputEvents);
             inputEvents = GetClusterEventList(inputEvents, startTimeUTC, endTimeUTC);
+            inputEvents = GetPartitionsEventList(inputEvents, startTimeUTC, endTimeUTC);
             return inputEvents;
         }
     }

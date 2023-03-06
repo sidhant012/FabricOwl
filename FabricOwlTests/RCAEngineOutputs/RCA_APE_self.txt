@@ -1,0 +1,32 @@
+﻿{
+  "relatedEvent": null,
+  "reasonForEvent": "The process/container terminated with exit code:7147. Deactivating becasue Fabric Node is closing. For information about common termination errors, please visit https://aka.ms/service-fabric-termination-errors",
+  "inputEvent": {
+    "ServiceName": "",
+    "ServicePackageName": "FAS",
+    "ServicePackageActivationId": "",
+    "IsExclusive": "false",
+    "CodePackageName": "Code",
+    "EntryPointType": "Exe",
+    "ExeName": "FabricFAS.exe",
+    "ProcessId": "6284",
+    "HostId": "85db29c2-1596-4750-a2b5-c84bfd222563",
+    "ExitCode": "7147",
+    "UnexpectedTermination": "false",
+    "StartTime": "2022-06-08T16:39:33Z",
+    "ActivityId": "02679c7c-d0ce-443e-bd1d-fbbf6527e225:0",
+    "ExitReason": "The process/container terminated with exit code:7147. Deactivating becasue Fabric Node is closing. For information about common termination errors, please visit https://aka.ms/service-fabric-termination-errors",
+    "ApplicationId": "System",
+    "Kind": "ApplicationProcessExited",
+    "EventInstanceId": "2389d5b0-3fa0-4ab6-b64e-1555893ff38d",
+    "TimeStamp": "2022-06-15T16:34:29.7929088Z",
+    "Category": "StateTransition",
+    "HasCorrelatedEvents": "false",
+    "DataType": "Application"
+  },
+  "Kind": "ApplicationProcessExited",
+  "Name": null,
+  "EventInstanceId": "2389d5b0-3fa0-4ab6-b64e-1555893ff38d",
+  "TimeStamp": "2022-06-15T16:34:29.7929088Z",
+  "DataType": "Application"
+}

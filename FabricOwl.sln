@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FabricOwl", "FabricOwl\FabricOwl.csproj", "{64B6C8EF-F70D-4627-8903-2B38BB616EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTPRequests", "HTTPRequests\HTTPRequests.csproj", "{63E03A35-D1A2-4B4A-A799-ED9F42813E2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTPRequests", "HTTPRequests\HTTPRequests.csproj", "{63E03A35-D1A2-4B4A-A799-ED9F42813E2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FabricOwlTests", "FabricOwlTests\FabricOwlTests.csproj", "{22DEC0B0-1E82-4F88-98F4-E6C0484956D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{63E03A35-D1A2-4B4A-A799-ED9F42813E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63E03A35-D1A2-4B4A-A799-ED9F42813E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63E03A35-D1A2-4B4A-A799-ED9F42813E2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22DEC0B0-1E82-4F88-98F4-E6C0484956D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DEC0B0-1E82-4F88-98F4-E6C0484956D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DEC0B0-1E82-4F88-98F4-E6C0484956D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DEC0B0-1E82-4F88-98F4-E6C0484956D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

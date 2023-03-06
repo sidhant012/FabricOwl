@@ -1,0 +1,810 @@
+[
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-a5890003-1f49-44d5-ab90-1f86db5e214e-UD-0",
+    "Version": "132997689183549882",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "mdpnt1_0"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "mdpnt1_0",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T12:15:18.354Z",
+      "ClaimedUtcTimestamp": "2022-06-15T12:15:18.354Z",
+      "PreparingUtcTimestamp": "2022-06-15T12:15:18.354Z",
+      "ApprovedUtcTimestamp": "2022-06-15T12:15:48.664Z",
+      "ExecutingUtcTimestamp": "2022-06-15T12:16:18.452Z",
+      "RestoringUtcTimestamp": "2022-06-15T12:30:51.172Z",
+      "CompletedUtcTimestamp": "2022-06-15T12:30:51.422Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T12:15:18.448Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T12:15:18.511Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T12:30:51.297Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T12:30:51.359Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-a5890003-1f49-44d5-ab90-1f86db5e214e-UD-1",
+    "Version": "132997706915851396",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "mdpnt1_1"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "mdpnt1_1",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T12:44:51.585Z",
+      "ClaimedUtcTimestamp": "2022-06-15T12:44:51.585Z",
+      "PreparingUtcTimestamp": "2022-06-15T12:44:51.585Z",
+      "ApprovedUtcTimestamp": "2022-06-15T12:45:21.931Z",
+      "ExecutingUtcTimestamp": "2022-06-15T12:45:51.669Z",
+      "RestoringUtcTimestamp": "2022-06-15T12:58:53.901Z",
+      "CompletedUtcTimestamp": "2022-06-15T12:58:54.151Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T12:44:51.678Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T12:44:51.725Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T12:58:54.026Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T12:58:54.088Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-a5890003-1f49-44d5-ab90-1f86db5e214e-UD-2",
+    "Version": "132997723741672757",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "mdpnt1_2"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "mdpnt1_2",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T13:12:54.167Z",
+      "ClaimedUtcTimestamp": "2022-06-15T13:12:54.167Z",
+      "PreparingUtcTimestamp": "2022-06-15T13:12:54.167Z",
+      "ApprovedUtcTimestamp": "2022-06-15T13:13:24.549Z",
+      "ExecutingUtcTimestamp": "2022-06-15T13:13:54.258Z",
+      "RestoringUtcTimestamp": "2022-06-15T13:28:56.916Z",
+      "CompletedUtcTimestamp": "2022-06-15T13:28:57.166Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T13:12:54.260Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T13:12:54.323Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T13:28:57.056Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T13:28:57.103Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-a5890003-1f49-44d5-ab90-1f86db5e214e-UD-3",
+    "Version": "132997741770982406",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "mdpnt1_3"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "mdpnt1_3",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T13:42:57.098Z",
+      "ClaimedUtcTimestamp": "2022-06-15T13:42:57.098Z",
+      "PreparingUtcTimestamp": "2022-06-15T13:42:57.098Z",
+      "ApprovedUtcTimestamp": "2022-06-15T13:43:27.466Z",
+      "ExecutingUtcTimestamp": "2022-06-15T13:43:57.181Z",
+      "RestoringUtcTimestamp": "2022-06-15T13:56:59.430Z",
+      "CompletedUtcTimestamp": "2022-06-15T13:56:59.711Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T13:42:57.192Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T13:42:57.238Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T13:56:59.586Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T13:56:59.648Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-a5890003-1f49-44d5-ab90-1f86db5e214e-UD-4",
+    "Version": "132997758595771320",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "mdpnt1_4"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "mdpnt1_4",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T14:10:59.577Z",
+      "ClaimedUtcTimestamp": "2022-06-15T14:10:59.577Z",
+      "PreparingUtcTimestamp": "2022-06-15T14:10:59.577Z",
+      "ApprovedUtcTimestamp": "2022-06-15T14:11:29.946Z",
+      "ExecutingUtcTimestamp": "2022-06-15T14:11:59.678Z",
+      "RestoringUtcTimestamp": "2022-06-15T14:25:32.371Z",
+      "CompletedUtcTimestamp": "2022-06-15T14:25:32.652Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T14:10:59.670Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T14:10:59.717Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T14:25:32.527Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T14:25:32.590Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-0",
+    "Version": "132997778915812406",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "NT1_0"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "NT1_0",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T14:44:51.581Z",
+      "ClaimedUtcTimestamp": "2022-06-15T14:44:51.581Z",
+      "PreparingUtcTimestamp": "2022-06-15T14:44:51.581Z",
+      "ApprovedUtcTimestamp": "2022-06-15T14:45:35.587Z",
+      "ExecutingUtcTimestamp": "2022-06-15T14:45:51.678Z",
+      "RestoringUtcTimestamp": "2022-06-15T14:58:24.572Z",
+      "CompletedUtcTimestamp": "2022-06-15T14:58:24.853Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T14:44:51.674Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T14:44:51.721Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T14:58:24.728Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T14:58:24.790Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-1",
+    "Version": "132997795447798646",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "NT1_1"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "NT1_1",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T15:12:24.779Z",
+      "ClaimedUtcTimestamp": "2022-06-15T15:12:24.779Z",
+      "PreparingUtcTimestamp": "2022-06-15T15:12:24.779Z",
+      "ApprovedUtcTimestamp": "2022-06-15T15:12:50.105Z",
+      "ExecutingUtcTimestamp": "2022-06-15T15:13:24.886Z",
+      "RestoringUtcTimestamp": "2022-06-15T15:25:27.320Z",
+      "CompletedUtcTimestamp": "2022-06-15T15:25:27.633Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T15:12:24.873Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T15:12:24.920Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T15:25:27.508Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T15:25:27.570Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-2",
+    "Version": "132997811676301418",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "NT1_2"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "NT1_2",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T15:39:27.630Z",
+      "ClaimedUtcTimestamp": "2022-06-15T15:39:27.630Z",
+      "PreparingUtcTimestamp": "2022-06-15T15:39:27.630Z",
+      "ApprovedUtcTimestamp": "2022-06-15T15:39:57.952Z",
+      "ExecutingUtcTimestamp": "2022-06-15T15:40:27.726Z",
+      "RestoringUtcTimestamp": "2022-06-15T15:52:29.810Z",
+      "CompletedUtcTimestamp": "2022-06-15T15:52:30.075Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T15:39:27.723Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T15:39:27.770Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T15:52:29.966Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T15:52:30.013Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-3",
+    "Version": "132997827900203682",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "NT1_3"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "NT1_3",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T16:06:30.020Z",
+      "ClaimedUtcTimestamp": "2022-06-15T16:06:30.020Z",
+      "PreparingUtcTimestamp": "2022-06-15T16:06:30.020Z",
+      "ApprovedUtcTimestamp": "2022-06-15T16:07:00.394Z",
+      "ExecutingUtcTimestamp": "2022-06-15T16:07:30.107Z",
+      "RestoringUtcTimestamp": "2022-06-15T16:20:02.698Z",
+      "CompletedUtcTimestamp": "2022-06-15T16:20:02.964Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T16:06:30.114Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T16:06:30.160Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T16:20:02.839Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T16:20:02.901Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+    "Version": "132997844428669194",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "NT1_4"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "NT1_4",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+      "ClaimedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+      "PreparingUtcTimestamp": "2022-06-15T16:34:02.866Z",
+      "ApprovedUtcTimestamp": "2022-06-15T16:34:48.232Z",
+      "ExecutingUtcTimestamp": "2022-06-15T16:35:02.949Z",
+      "RestoringUtcTimestamp": "2022-06-15T16:47:05.211Z",
+      "CompletedUtcTimestamp": "2022-06-15T16:47:05.461Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T16:34:02.945Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T16:34:02.991Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T16:47:05.352Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T16:47:05.399Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-6e560001-a053-4e11-964e-2dbf3590a550-UD-0",
+    "Version": "132967254428184715",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "_Type341_0",
+        "querynt1_9"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "querynt1_0",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_9",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-05-11T06:50:42.818Z",
+      "ClaimedUtcTimestamp": "2022-05-11T06:50:42.818Z",
+      "PreparingUtcTimestamp": "2022-05-11T06:50:42.818Z",
+      "ApprovedUtcTimestamp": "2022-05-11T06:51:17.226Z",
+      "ExecutingUtcTimestamp": "2022-05-11T06:51:42.937Z",
+      "RestoringUtcTimestamp": "2022-05-11T07:05:15.526Z",
+      "CompletedUtcTimestamp": "2022-05-11T07:05:15.810Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-05-11T06:50:42.912Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-05-11T06:50:42.974Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-05-11T07:05:15.685Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-05-11T07:05:15.732Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-6e560001-a053-4e11-964e-2dbf3590a550-UD-1",
+    "Version": "132967271557037639",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "_Type341_1",
+        "querynt1_5"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "querynt1_1",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_5",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-05-11T07:19:15.703Z",
+      "ClaimedUtcTimestamp": "2022-05-11T07:19:15.703Z",
+      "PreparingUtcTimestamp": "2022-05-11T07:19:15.703Z",
+      "ApprovedUtcTimestamp": "2022-05-11T07:19:46.054Z",
+      "ExecutingUtcTimestamp": "2022-05-11T07:20:15.785Z",
+      "RestoringUtcTimestamp": "2022-05-11T07:34:18.756Z",
+      "CompletedUtcTimestamp": "2022-05-11T07:34:19.022Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-05-11T07:19:15.781Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-05-11T07:19:15.828Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-05-11T07:34:18.897Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-05-11T07:34:18.959Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-6e560001-a053-4e11-964e-2dbf3590a550-UD-2",
+    "Version": "132967288989998386",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "querynt1_2",
+        "querynt1_6",
+        "querynt1_10"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "querynt1_2",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_6",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_10",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-05-11T07:48:18.999Z",
+      "ClaimedUtcTimestamp": "2022-05-11T07:48:18.999Z",
+      "PreparingUtcTimestamp": "2022-05-11T07:48:18.999Z",
+      "ApprovedUtcTimestamp": "2022-05-11T07:49:04.387Z",
+      "ExecutingUtcTimestamp": "2022-05-11T07:49:19.077Z",
+      "RestoringUtcTimestamp": "2022-05-11T08:02:51.715Z",
+      "CompletedUtcTimestamp": "2022-05-11T08:02:51.950Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-05-11T07:48:19.077Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-05-11T07:48:19.124Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-05-11T08:02:51.840Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-05-11T08:02:51.887Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-6e560001-a053-4e11-964e-2dbf3590a550-UD-3",
+    "Version": "132967306118346366",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "querynt1_3",
+        "querynt1_7",
+        "querynt1_11"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "querynt1_3",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_7",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_11",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-05-11T08:16:51.834Z",
+      "ClaimedUtcTimestamp": "2022-05-11T08:16:51.834Z",
+      "PreparingUtcTimestamp": "2022-05-11T08:16:51.834Z",
+      "ApprovedUtcTimestamp": "2022-05-11T08:17:33.206Z",
+      "ExecutingUtcTimestamp": "2022-05-11T08:17:51.901Z",
+      "RestoringUtcTimestamp": "2022-05-11T08:32:24.454Z",
+      "CompletedUtcTimestamp": "2022-05-11T08:32:24.704Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-05-11T08:16:51.912Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-05-11T08:16:51.959Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-05-11T08:32:24.579Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-05-11T08:32:24.642Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-6e560001-a053-4e11-964e-2dbf3590a550-UD-4",
+    "Version": "132967323846902430",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "querynt1_4",
+        "querynt1_8"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "querynt1_4",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_8",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Failed",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-05-11T08:46:24.690Z",
+      "ClaimedUtcTimestamp": "2022-05-11T08:46:24.690Z",
+      "PreparingUtcTimestamp": "2022-05-11T08:46:24.690Z",
+      "ApprovedUtcTimestamp": "2022-05-11T08:46:55.032Z",
+      "ExecutingUtcTimestamp": "2022-05-11T08:47:24.767Z",
+      "RestoringUtcTimestamp": "2022-05-11T09:42:04.177Z",
+      "CompletedUtcTimestamp": "2022-05-11T09:42:04.474Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-05-11T08:46:24.783Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-05-11T08:46:24.830Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-05-11T09:42:04.349Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-05-11T09:42:04.411Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  },
+  {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "TaskId": "SFRP-a8120001-e326-40da-b5cf-749b13dc0127-UD-4",
+    "Version": "132968231516204816",
+    "Description": "",
+    "State": "Completed",
+    "Flags": 0,
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "querynt1_4",
+        "querynt1_8"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "querynt1_4",
+          "ImpactLevel": "Restart"
+        },
+        {
+          "NodeName": "querynt1_8",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": 0,
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-05-12T09:59:11.620Z",
+      "ClaimedUtcTimestamp": "2022-05-12T09:59:11.620Z",
+      "PreparingUtcTimestamp": "2022-05-12T09:59:11.620Z",
+      "ApprovedUtcTimestamp": "2022-05-12T09:59:41.959Z",
+      "ExecutingUtcTimestamp": "2022-05-12T10:00:11.697Z",
+      "RestoringUtcTimestamp": "2022-05-12T10:00:11.775Z",
+      "CompletedUtcTimestamp": "2022-05-12T10:00:12.040Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-05-12T09:59:11.714Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-05-12T09:59:11.761Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-05-12T10:00:11.915Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-05-12T10:00:11.978Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": false,
+    "PerformRestoringHealthCheck": false
+  }
+]
