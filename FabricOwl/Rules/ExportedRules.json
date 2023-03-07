@@ -64,6 +64,10 @@
           {
             "sourceProperty": "ActivityId",
             "targetProperty": "ActivityId"
+          },
+          {
+            "sourceProperty": "PartitionId",
+            "targetProperty": "PartitionId"
           }
         ]
       }
