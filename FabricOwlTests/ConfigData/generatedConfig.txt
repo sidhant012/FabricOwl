@@ -1,0 +1,1581 @@
+﻿[
+  {
+    "eventType": "ApplicationProcessExited",
+    "relevantEventsType": [
+      {
+        "eventType": "NodeDown",
+        "propertyMappings": [
+          {
+            "sourceProperty": "NodeName",
+            "targetProperty": "NodeName",
+            "sourceTransform": null,
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "NodeInstance",
+            "targetProperty": "NodeInstance",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "7147",
+            "sourceTransform": null,
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Restarting the container because HEALTHCHECK for Docker container",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination - restart due to configured container healthcheck failure."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "7147",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          },
+          {
+            "type": "trimBack",
+            "value": "ContainerName"
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "3221225786",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "7148",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "UnexpectedTermination",
+            "targetProperty": "true",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          },
+          {
+            "type": "prefix",
+            "value": "Unexpected Termination - "
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating application as application contents have changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as application manifest contents have changes due to an app upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating application as application contents have changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as application manifest contents have changes due to an app upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since updating application version failed as part of upgrade.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since updating application version failed as part of upgrade.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating as Restart-DeployedCodePackage API invoked.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Restarting code package as Restart-DeployedCodePackage API was invoked."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating as Restart-DeployedCodePackage API invoked.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Restarting code package as Restart-DeployedCodePackage API was invoked."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating becasue Fabric Node is closing.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as SF node is shutting down."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating becasue Fabric Node is closing.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as SF node is shutting down."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since no replica hosted.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as process is idle and no replica/instance is hosted inside."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since no replica hosted.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as process is idle and no replica/instance is hosted inside."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since service package minor version change failed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since service package minor version change failed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since either RG changed, or upgrade is force restart, or major version changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as RG changed or force restart was specified during application upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since either RG changed, or upgrade is force restart, or major version changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as RG changed or force restart was specified during application upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating as part of request from Activator CodePackage.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package on demand from activator code package."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating as part of request from Activator CodePackage.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package on demand from activator code package."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating as part of upgrade since code package changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as the code package contents have changed due to an app upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating as part of upgrade since code package changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as the code package contents have changed due to an app upgrade."
+      }
+    ],
+    "result": "ExitReason",
+    "resultTransform": null
+  },
+  {
+    "eventType": "ApplicationContainerInstanceExited",
+    "relevantEventsType": [
+      {
+        "eventType": "NodeDown",
+        "propertyMappings": [
+          {
+            "sourceProperty": "NodeName",
+            "targetProperty": "NodeName",
+            "sourceTransform": null,
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "NodeInstance",
+            "targetProperty": "NodeInstance",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "7147",
+            "sourceTransform": null,
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Restarting the container because HEALTHCHECK for Docker container",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination - restart due to configured container healthcheck failure."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "7147",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          },
+          {
+            "type": "trimBack",
+            "value": "ContainerName"
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "3221225786",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitCode",
+            "targetProperty": "7148",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "UnexpectedTermination",
+            "targetProperty": "true",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": [
+          {
+            "type": "trimFront",
+            "value": "."
+          },
+          {
+            "type": "trimBack",
+            "value": "For information"
+          },
+          {
+            "type": "prefix",
+            "value": "Unexpected Termination - "
+          }
+        ],
+        "result": null
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating application as application contents have changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as application manifest contents have changes due to an app upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating application as application contents have changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as application manifest contents have changes due to an app upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since updating application version failed as part of upgrade.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since updating application version failed as part of upgrade.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating as Restart-DeployedCodePackage API invoked.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Restarting code package as Restart-DeployedCodePackage API was invoked."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating as Restart-DeployedCodePackage API invoked.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Restarting code package as Restart-DeployedCodePackage API was invoked."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating becasue Fabric Node is closing.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as SF node is shutting down."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating becasue Fabric Node is closing.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as SF node is shutting down."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since no replica hosted.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as process is idle and no replica/instance is hosted inside."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since no replica hosted.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as process is idle and no replica/instance is hosted inside."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since service package minor version change failed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since service package minor version change failed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as upgrade failed."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating since either RG changed, or upgrade is force restart, or major version changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as RG changed or force restart was specified during application upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating since either RG changed, or upgrade is force restart, or major version changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as RG changed or force restart was specified during application upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating as part of request from Activator CodePackage.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package on demand from activator code package."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating as part of request from Activator CodePackage.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package on demand from activator code package."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Deactivating as part of upgrade since code package changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination  - Stopping code package as the code package contents have changed due to an app upgrade."
+      },
+      {
+        "eventType": "self",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ExitReason",
+            "targetProperty": "Aborting since deactivation failed. Deactivating as part of upgrade since code package changed.",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ". "
+              },
+              {
+                "type": "trimBack",
+                "value": "For information"
+              },
+              {
+                "type": "trimBack",
+                "value": " ContainerName"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": "Expected Termination but not graceful shutdown - Stopping code package as the code package contents have changed due to an app upgrade."
+      }
+    ],
+    "result": "ExitReason",
+    "resultTransform": null
+  },
+  {
+    "eventType": "NodeDown",
+    "relevantEventsType": [
+      {
+        "eventType": "NodeDeactivateStarted",
+        "propertyMappings": [
+          {
+            "sourceProperty": "NodeName",
+            "targetProperty": "NodeName",
+            "sourceTransform": null,
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "NodeInstance",
+            "targetProperty": "NodeInstance",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      }
+    ],
+    "result": "",
+    "resultTransform": null
+  },
+  {
+    "eventType": "NodeDeactivateStarted",
+    "relevantEventsType": [
+      {
+        "eventType": "RepairTask",
+        "propertyMappings": [
+          {
+            "sourceProperty": "BatchId",
+            "targetProperty": "TaskId",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": "/"
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      }
+    ],
+    "result": "",
+    "resultTransform": null
+  },
+  {
+    "eventType": "RepairTask",
+    "relevantEventsType": [],
+    "result": "Action",
+    "resultTransform": null
+  },
+  {
+    "eventType": "PartitionReconfigurationStarted",
+    "relevantEventsType": [
+      {
+        "eventType": "PartitionReconfigured",
+        "propertyMappings": [
+          {
+            "sourceProperty": "ActivityId",
+            "targetProperty": "ActivityId",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      }
+    ],
+    "result": "NewPrimaryNodeName",
+    "resultTransform": [
+      {
+        "type": "prefix",
+        "value": "New Primary Node Name is "
+      }
+    ]
+  },
+  {
+    "eventType": "PartitionReconfigured",
+    "relevantEventsType": [],
+    "result": "ReconfigType",
+    "resultTransform": null
+  },
+  {
+    "eventType": "ClusterNewHealthReport",
+    "relevantEventsType": [
+      {
+        "eventType": "NodeClosed",
+        "propertyMappings": [
+          {
+            "sourceProperty": "Description",
+            "targetProperty": "NodeName",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": ":"
+              },
+              {
+                "type": "trimFront",
+                "value": ":"
+              },
+              {
+                "type": "trimBack",
+                "value": "("
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "Description",
+            "targetProperty": "NodeId",
+            "sourceTransform": [
+              {
+                "type": "trimFront",
+                "value": "("
+              },
+              {
+                "type": "trimFront",
+                "value": "("
+              },
+              {
+                "type": "trimBack",
+                "value": ")"
+              },
+              {
+                "type": "trimWhiteSpace",
+                "value": null
+              }
+            ],
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      }
+    ],
+    "result": "Description",
+    "resultTransform": [
+      {
+        "type": "trimFront",
+        "value": ":"
+      },
+      {
+        "type": "trimFront",
+        "value": ":"
+      },
+      {
+        "type": "trimBack",
+        "value": "("
+      },
+      {
+        "type": "trimWhiteSpace",
+        "value": null
+      }
+    ]
+  },
+  {
+    "eventType": "NodeClosed",
+    "relevantEventsType": [
+      {
+        "eventType": "NodeDown",
+        "propertyMappings": [
+          {
+            "sourceProperty": "NodeName",
+            "targetProperty": "NodeName",
+            "sourceTransform": null,
+            "targetTransform": null
+          },
+          {
+            "sourceProperty": "NodeInstance",
+            "targetProperty": "NodeInstance",
+            "sourceTransform": null,
+            "targetTransform": null
+          }
+        ],
+        "selfTransform": null,
+        "result": null
+      }
+    ],
+    "result": "",
+    "resultTransform": null
+  }
+]

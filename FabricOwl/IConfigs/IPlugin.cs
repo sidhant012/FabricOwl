@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace FabricOwl.IConfigs
 {
     public interface IPlugin
     {
-        string GetApplicationsEventList(string startTimeUTC, string endTimeUTC);
-        string GetNodesEventList(string startTimeUTC, string endTimeUTC);
-        string GetClusterEventList(string startTimeUTC, string endTimeUTC);
-        string GetRepairTasksEventList();
+        List<ICommonSFItems> ReturnEvents(List<ICommonSFItems> inputEvents, string startTimeUTC, string endTimeUTC);
+
     }
 }

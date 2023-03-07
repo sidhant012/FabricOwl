@@ -62,13 +62,13 @@
         "eventType": "PartitionReconfigured",
         "propertyMappings": [
           {
-            "sourceProperty": "eventProperties.ActivityId",
-            "targetProperty": "eventProperties.ActivityId"
+            "sourceProperty": "ActivityId",
+            "targetProperty": "ActivityId"
           }
         ]
       }
     ],
-    "result": "eventProperties.NewPrimaryNodeName",
+    "result": "NewPrimaryNodeName",
     "resultTransform": [
       {
         "type": "prefix",
@@ -80,7 +80,7 @@
     "eventType": "PartitionReconfigured",
     "relevantEventsType": [
     ],
-    "result": "eventProperties.ReconfigType"
+    "result": "ReconfigType"
   },
   {
     "eventType": "ClusterNewHealthReport",
@@ -89,7 +89,7 @@
         "eventType": "NodeClosed",
         "propertyMappings": [
           {
-            "sourceProperty": "eventProperties.Description",
+            "sourceProperty": "Description",
             "targetProperty": "NodeName",
             "sourceTransform": [
               {
@@ -110,7 +110,7 @@
             ]
           },
           {
-            "sourceProperty": "eventProperties.Description",
+            "sourceProperty": "Description",
             "targetProperty": "NodeId",
             "sourceTransform": [
               {
@@ -133,7 +133,7 @@
         ]
       }
     ],
-    "result": "eventProperties.Description",
+    "result": "Description",
     "resultTransform": [
       {
         "type": "trimFront",

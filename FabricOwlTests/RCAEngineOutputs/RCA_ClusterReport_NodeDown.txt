@@ -1,0 +1,128 @@
+{
+  "relatedEvent": null,
+  "reasonForEvent": "",
+  "inputEvent": {
+    "SourceUtcTimestamp": "0001-01-01T00:00:00",
+    "NodeName": "System_2",
+    "Kind": "NodeDown",
+    "EventInstanceId": "54605292-6017-4b73-b3c3-10a9ff648e0f",
+    "TimeStamp": "2022-09-20T21:26:05.0991769Z",
+    "Category": "StateTransition",
+    "HasCorrelatedEvents": "false",
+    "NodeInstance": "133075916951448350",
+    "LastNodeUpAt": "2022-09-14T01:15:06Z",
+    "DataType": "Node"
+  },
+  "Kind": "NodeDown",
+  "Name": null,
+  "EventInstanceId": "54605292-6017-4b73-b3c3-10a9ff648e0f",
+  "TimeStamp": "2022-09-20T21:26:05.0991769Z",
+  "DataType": "Node"
+}{
+  "relatedEvent": {
+    "relatedEvent": null,
+    "reasonForEvent": "",
+    "inputEvent": {
+      "SourceUtcTimestamp": "0001-01-01T00:00:00",
+      "NodeName": "System_2",
+      "Kind": "NodeDown",
+      "EventInstanceId": "54605292-6017-4b73-b3c3-10a9ff648e0f",
+      "TimeStamp": "2022-09-20T21:26:05.0991769Z",
+      "Category": "StateTransition",
+      "HasCorrelatedEvents": "false",
+      "NodeInstance": "133075916951448350",
+      "LastNodeUpAt": "2022-09-14T01:15:06Z",
+      "DataType": "Node"
+    },
+    "Kind": "NodeDown",
+    "Name": null,
+    "EventInstanceId": "54605292-6017-4b73-b3c3-10a9ff648e0f",
+    "TimeStamp": "2022-09-20T21:26:05.0991769Z",
+    "DataType": "Node"
+  },
+  "reasonForEvent": "",
+  "inputEvent": {
+    "SourceUtcTimestamp": "0001-01-01T00:00:00",
+    "NodeName": "System_2",
+    "Kind": "NodeClosed",
+    "EventInstanceId": "48f08552-5fb5-4406-a76a-b362fbbb1cde",
+    "TimeStamp": "2022-09-20T21:25:18.1753084Z",
+    "Category": "StateTransition",
+    "HasCorrelatedEvents": "false",
+    "NodeInstance": "133075916951448350",
+    "NodeId": "b064614bb4e47c90927d0bcc3e00098b",
+    "Error": "FABRIC_E_INVALID_OPERATION",
+    "DataType": "Node"
+  },
+  "Kind": "NodeClosed",
+  "Name": null,
+  "EventInstanceId": "48f08552-5fb5-4406-a76a-b362fbbb1cde",
+  "TimeStamp": "2022-09-20T21:25:18.1753084Z",
+  "DataType": "Node"
+}{
+  "relatedEvent": {
+    "relatedEvent": {
+      "relatedEvent": null,
+      "reasonForEvent": "",
+      "inputEvent": {
+        "SourceUtcTimestamp": "0001-01-01T00:00:00",
+        "NodeName": "System_2",
+        "Kind": "NodeDown",
+        "EventInstanceId": "54605292-6017-4b73-b3c3-10a9ff648e0f",
+        "TimeStamp": "2022-09-20T21:26:05.0991769Z",
+        "Category": "StateTransition",
+        "HasCorrelatedEvents": "false",
+        "NodeInstance": "133075916951448350",
+        "LastNodeUpAt": "2022-09-14T01:15:06Z",
+        "DataType": "Node"
+      },
+      "Kind": "NodeDown",
+      "Name": null,
+      "EventInstanceId": "54605292-6017-4b73-b3c3-10a9ff648e0f",
+      "TimeStamp": "2022-09-20T21:26:05.0991769Z",
+      "DataType": "Node"
+    },
+    "reasonForEvent": "",
+    "inputEvent": {
+      "SourceUtcTimestamp": "0001-01-01T00:00:00",
+      "NodeName": "System_2",
+      "Kind": "NodeClosed",
+      "EventInstanceId": "48f08552-5fb5-4406-a76a-b362fbbb1cde",
+      "TimeStamp": "2022-09-20T21:25:18.1753084Z",
+      "Category": "StateTransition",
+      "HasCorrelatedEvents": "false",
+      "NodeInstance": "133075916951448350",
+      "NodeId": "b064614bb4e47c90927d0bcc3e00098b",
+      "Error": "FABRIC_E_INVALID_OPERATION",
+      "DataType": "Node"
+    },
+    "Kind": "NodeClosed",
+    "Name": null,
+    "EventInstanceId": "48f08552-5fb5-4406-a76a-b362fbbb1cde",
+    "TimeStamp": "2022-09-20T21:25:18.1753084Z",
+    "DataType": "Node"
+  },
+  "reasonForEvent": "System_2",
+  "inputEvent": {
+    "OverallUpgradeElapsedTimeInMs": 0.0,
+    "Kind": "ClusterNewHealthReport",
+    "EventInstanceId": "5300a654-9ff0-40c7-8a31-4ab6dc5ed755",
+    "TimeStamp": "2022-09-20T21:26:14.6895194Z",
+    "Category": "Health",
+    "HasCorrelatedEvents": "false",
+    "SourceId": "System.FM",
+    "Property": "SeedNodeStatus",
+    "HealthState": "Warning",
+    "TimeToLiveMs": 922337203685477,
+    "SequenceNumber": 133081827651191710,
+    "Description": "Some seed nodes are unhealthy. Loss of a majority of seed nodes can cause cluster failure. \n1 out of 5 seed nodes are Down. Down seed nodes: \nNodeName(NodeId): System_2(b064614bb4e47c90927d0bcc3e00098b) Node Down At: 2022-09-20 21:26:05.056\nFor more information to fix this, see: https://aka.ms/sfhealth",
+    "RemoveWhenExpired": true,
+    "SourceUtcTimestamp": "2022-09-20T21:26:05Z",
+    "DataType": "Cluster"
+  },
+  "Kind": "ClusterNewHealthReport",
+  "Name": null,
+  "EventInstanceId": "5300a654-9ff0-40c7-8a31-4ab6dc5ed755",
+  "TimeStamp": "2022-09-20T21:26:14.6895194Z",
+  "DataType": "Cluster"
+}

@@ -1,0 +1,246 @@
+﻿{
+  "relatedEvent": null,
+  "reasonForEvent": "SFRP.AutoOSUpgrade",
+  "inputEvent": {
+    "Scope": {
+      "Kind": "Cluster"
+    },
+    "Version": "132997844428669194",
+    "Description": "",
+    "State": "Completed",
+    "Flags": "0",
+    "Action": "SFRP.AutoOSUpgrade",
+    "Target": {
+      "Kind": "Node",
+      "NodeNames": [
+        "NT1_4"
+      ]
+    },
+    "Executor": "SFRP",
+    "ExecutorData": "",
+    "Impact": {
+      "Kind": "Node",
+      "NodeImpactList": [
+        {
+          "NodeName": "NT1_4",
+          "ImpactLevel": "Restart"
+        }
+      ]
+    },
+    "ResultStatus": "Succeeded",
+    "ResultCode": "0",
+    "ResultDetails": "",
+    "History": {
+      "CreatedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+      "ClaimedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+      "PreparingUtcTimestamp": "2022-06-15T16:34:02.866Z",
+      "ApprovedUtcTimestamp": "2022-06-15T16:34:48.232Z",
+      "ExecutingUtcTimestamp": "2022-06-15T16:35:02.949Z",
+      "RestoringUtcTimestamp": "2022-06-15T16:47:05.211Z",
+      "CompletedUtcTimestamp": "2022-06-15T16:47:05.461Z",
+      "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T16:34:02.945Z",
+      "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T16:34:02.991Z",
+      "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T16:47:05.352Z",
+      "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T16:47:05.399Z"
+    },
+    "PreparingHealthCheckState": "Skipped",
+    "RestoringHealthCheckState": "Skipped",
+    "PerformPreparingHealthCheck": "false",
+    "PerformRestoringHealthCheck": "false",
+    "Kind": "RepairTask",
+    "EventInstanceId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+    "Name": "",
+    "DataType": "RepairTask",
+    "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+    "TimeStamp": "2022-06-15T16:34:02.866Z"
+  },
+  "Kind": "RepairTask",
+  "Name": "",
+  "EventInstanceId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+  "TimeStamp": "2022-06-15T16:34:02.866Z",
+  "DataType": "RepairTask"
+}{
+  "relatedEvent": {
+    "relatedEvent": null,
+    "reasonForEvent": "SFRP.AutoOSUpgrade",
+    "inputEvent": {
+      "Scope": {
+        "Kind": "Cluster"
+      },
+      "Version": "132997844428669194",
+      "Description": "",
+      "State": "Completed",
+      "Flags": "0",
+      "Action": "SFRP.AutoOSUpgrade",
+      "Target": {
+        "Kind": "Node",
+        "NodeNames": [
+          "NT1_4"
+        ]
+      },
+      "Executor": "SFRP",
+      "ExecutorData": "",
+      "Impact": {
+        "Kind": "Node",
+        "NodeImpactList": [
+          {
+            "NodeName": "NT1_4",
+            "ImpactLevel": "Restart"
+          }
+        ]
+      },
+      "ResultStatus": "Succeeded",
+      "ResultCode": "0",
+      "ResultDetails": "",
+      "History": {
+        "CreatedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+        "ClaimedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+        "PreparingUtcTimestamp": "2022-06-15T16:34:02.866Z",
+        "ApprovedUtcTimestamp": "2022-06-15T16:34:48.232Z",
+        "ExecutingUtcTimestamp": "2022-06-15T16:35:02.949Z",
+        "RestoringUtcTimestamp": "2022-06-15T16:47:05.211Z",
+        "CompletedUtcTimestamp": "2022-06-15T16:47:05.461Z",
+        "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T16:34:02.945Z",
+        "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T16:34:02.991Z",
+        "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T16:47:05.352Z",
+        "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T16:47:05.399Z"
+      },
+      "PreparingHealthCheckState": "Skipped",
+      "RestoringHealthCheckState": "Skipped",
+      "PerformPreparingHealthCheck": "false",
+      "PerformRestoringHealthCheck": "false",
+      "Kind": "RepairTask",
+      "EventInstanceId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+      "Name": "",
+      "DataType": "RepairTask",
+      "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+      "TimeStamp": "2022-06-15T16:34:02.866Z"
+    },
+    "Kind": "RepairTask",
+    "Name": "",
+    "EventInstanceId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+    "TimeStamp": "2022-06-15T16:34:02.866Z",
+    "DataType": "RepairTask"
+  },
+  "reasonForEvent": "",
+  "inputEvent": {
+    "SourceUtcTimestamp": "0001-01-01T00:00:00",
+    "NodeName": "NT1_4",
+    "Kind": "NodeDeactivateStarted",
+    "EventInstanceId": "fcd49c38-cba6-4b76-be3f-4c8c337a3bed",
+    "TimeStamp": "2022-06-15T16:33:22.4366092Z",
+    "Category": "StateTransition",
+    "HasCorrelatedEvents": "false",
+    "NodeInstance": "132991799176321150",
+    "BatchId": "RM/SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+    "DeactivateIntent": "Restart",
+    "DataType": "Node"
+  },
+  "Kind": "NodeDeactivateStarted",
+  "Name": null,
+  "EventInstanceId": "fcd49c38-cba6-4b76-be3f-4c8c337a3bed",
+  "TimeStamp": "2022-06-15T16:33:22.4366092Z",
+  "DataType": "Node"
+}{
+  "relatedEvent": {
+    "relatedEvent": {
+      "relatedEvent": null,
+      "reasonForEvent": "SFRP.AutoOSUpgrade",
+      "inputEvent": {
+        "Scope": {
+          "Kind": "Cluster"
+        },
+        "Version": "132997844428669194",
+        "Description": "",
+        "State": "Completed",
+        "Flags": "0",
+        "Action": "SFRP.AutoOSUpgrade",
+        "Target": {
+          "Kind": "Node",
+          "NodeNames": [
+            "NT1_4"
+          ]
+        },
+        "Executor": "SFRP",
+        "ExecutorData": "",
+        "Impact": {
+          "Kind": "Node",
+          "NodeImpactList": [
+            {
+              "NodeName": "NT1_4",
+              "ImpactLevel": "Restart"
+            }
+          ]
+        },
+        "ResultStatus": "Succeeded",
+        "ResultCode": "0",
+        "ResultDetails": "",
+        "History": {
+          "CreatedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+          "ClaimedUtcTimestamp": "2022-06-15T16:34:02.866Z",
+          "PreparingUtcTimestamp": "2022-06-15T16:34:02.866Z",
+          "ApprovedUtcTimestamp": "2022-06-15T16:34:48.232Z",
+          "ExecutingUtcTimestamp": "2022-06-15T16:35:02.949Z",
+          "RestoringUtcTimestamp": "2022-06-15T16:47:05.211Z",
+          "CompletedUtcTimestamp": "2022-06-15T16:47:05.461Z",
+          "PreparingHealthCheckStartUtcTimestamp": "2022-06-15T16:34:02.945Z",
+          "PreparingHealthCheckEndUtcTimestamp": "2022-06-15T16:34:02.991Z",
+          "RestoringHealthCheckStartUtcTimestamp": "2022-06-15T16:47:05.352Z",
+          "RestoringHealthCheckEndUtcTimestamp": "2022-06-15T16:47:05.399Z"
+        },
+        "PreparingHealthCheckState": "Skipped",
+        "RestoringHealthCheckState": "Skipped",
+        "PerformPreparingHealthCheck": "false",
+        "PerformRestoringHealthCheck": "false",
+        "Kind": "RepairTask",
+        "EventInstanceId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+        "Name": "",
+        "DataType": "RepairTask",
+        "TaskId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+        "TimeStamp": "2022-06-15T16:34:02.866Z"
+      },
+      "Kind": "RepairTask",
+      "Name": "",
+      "EventInstanceId": "SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+      "TimeStamp": "2022-06-15T16:34:02.866Z",
+      "DataType": "RepairTask"
+    },
+    "reasonForEvent": "",
+    "inputEvent": {
+      "SourceUtcTimestamp": "0001-01-01T00:00:00",
+      "NodeName": "NT1_4",
+      "Kind": "NodeDeactivateStarted",
+      "EventInstanceId": "fcd49c38-cba6-4b76-be3f-4c8c337a3bed",
+      "TimeStamp": "2022-06-15T16:33:22.4366092Z",
+      "Category": "StateTransition",
+      "HasCorrelatedEvents": "false",
+      "NodeInstance": "132991799176321150",
+      "BatchId": "RM/SFRP-b0340003-e2f4-4d05-a2c8-4aa9f05c0caa-UD-4",
+      "DeactivateIntent": "Restart",
+      "DataType": "Node"
+    },
+    "Kind": "NodeDeactivateStarted",
+    "Name": null,
+    "EventInstanceId": "fcd49c38-cba6-4b76-be3f-4c8c337a3bed",
+    "TimeStamp": "2022-06-15T16:33:22.4366092Z",
+    "DataType": "Node"
+  },
+  "reasonForEvent": "",
+  "inputEvent": {
+    "SourceUtcTimestamp": "0001-01-01T00:00:00",
+    "NodeName": "NT1_4",
+    "Kind": "NodeDown",
+    "EventInstanceId": "0209c2ec-e9f8-425d-a332-7b4e65097134",
+    "TimeStamp": "2022-06-15T16:35:10.5961947Z",
+    "Category": "StateTransition",
+    "HasCorrelatedEvents": "false",
+    "NodeInstance": "132991799176321150",
+    "LastNodeUpAt": "2022-06-08T16:38:56Z",
+    "DataType": "Node"
+  },
+  "Kind": "NodeDown",
+  "Name": null,
+  "EventInstanceId": "0209c2ec-e9f8-425d-a332-7b4e65097134",
+  "TimeStamp": "2022-06-15T16:35:10.5961947Z",
+  "DataType": "Node"
+}

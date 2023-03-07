@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace FabricOwl.SFObjects
 {
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class RepairItem : ICommonSFItems
     {
         public Scope Scope { get; set; }
