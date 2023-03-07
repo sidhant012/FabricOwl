@@ -1455,6 +1455,12 @@
             "targetProperty": "ActivityId",
             "sourceTransform": null,
             "targetTransform": null
+          },
+          {
+            "sourceProperty": "PartitionId",
+            "targetProperty": "PartitionId",
+            "sourceTransform": null,
+            "targetTransform": null
           }
         ],
         "selfTransform": null,
