@@ -66,32 +66,6 @@ namespace FabricOwl
                 inputEvents = Plugins[key].ReturnEvents(inputEvents, startTimeUTC, endTimeUTC);   
             }
 
-            
-/*            List<ICommonSFItems> filteredInputEvents = new List<ICommonSFItems>();
-            if(!String.IsNullOrEmpty(eventInstanceIds))
-            {
-                foreach (var e in eventInstanceId)
-                {
-                    bool exists = false;
-                    foreach (var inputEvent in inputEvents)
-                    {
-                        if (!String.IsNullOrEmpty(e) && inputEvent.EventInstanceId == e)
-                        {
-                            filteredInputEvents.Add(inputEvent);
-                            exists = true;
-                        }
-                    }
-                    if (!exists)
-                    {
-                        Console.WriteLine($"EventInstanceId {e} does not exist \n");
-                    }
-                }
-                if(filteredInputEvents.Count == 0)
-                {
-                    return;
-                }
-            }*/
-
             List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
 
             //******** This is the actual execution of the RCA

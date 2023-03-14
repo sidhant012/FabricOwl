@@ -122,6 +122,22 @@ namespace FabricOwlTests
             Assert.AreEqual(result, File.ReadAllText(@"..\..\..\RCAEngineOutputs\RCA_ClusterReport_NodeDown.txt"));
         }
 
+        [TestMethod]
+        public void Test_EventDoesNotExist()
+        {
+            string eventInstanceIds = "fc33417b-b1ca-429f-8d9f-01e9fc356d76, f01732cf-092e-4fcc-b174-a85b03345d30";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
+            List<ICommonSFItems> inputEvents = getInputEvents();
+
+            var stringWriter = new StringWriter();
+            Console.SetOut(stringWriter);
+
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
+            string result = stringWriter.ToString();
+            Assert.AreEqual(result.Trim(), "EventInstanceId fc33417b-b1ca-429f-8d9f-01e9fc356d76 does not exist");
+        }
+
         //Using this to check specific RCAs
         // some other IDs I can test s.InputEvent.EventInstanceId == "fcd49c38-cba6-4b76-be3f-4c8c337a3bed" (Node Deactivated --> due to Repair Task)
         // s.InputEvent.EventInstanceId == "80876de0-ae43-4ff0-be18-1070a68670b7" (Application Process Exited (APE) -->Node Down --> Node Deactivated --> due to Repair Task)
