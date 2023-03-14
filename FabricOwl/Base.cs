@@ -8,6 +8,7 @@ using System.Fabric;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Security;
 
@@ -66,20 +67,32 @@ namespace FabricOwl
             }
 
             
-            List<ICommonSFItems> filteredInputEvents = new List<ICommonSFItems>();
+/*            List<ICommonSFItems> filteredInputEvents = new List<ICommonSFItems>();
             if(!String.IsNullOrEmpty(eventInstanceIds))
             {
-                foreach (var inputEvent in inputEvents)
+                foreach (var e in eventInstanceId)
                 {
-                    foreach (var e in eventInstanceId)
+                    bool exists = false;
+                    foreach (var inputEvent in inputEvents)
                     {
                         if (!String.IsNullOrEmpty(e) && inputEvent.EventInstanceId == e)
                         {
                             filteredInputEvents.Add(inputEvent);
+                            exists = true;
                         }
                     }
+                    if (!exists)
+                    {
+                        Console.WriteLine($"EventInstanceId {e} does not exist \n");
+                    }
                 }
-            }
+                if(filteredInputEvents.Count == 0)
+                {
+                    return;
+                }
+            }*/
+
+            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
 
             //******** This is the actual execution of the RCA
             //******** Returns a list of the events and its respective RCA for each event
@@ -98,14 +111,34 @@ namespace FabricOwl
             }
         }
 
-        public static List<RepairItem> SetRepairValues(List<RepairItem> list)
+        public static List<ICommonSFItems> getFilteredInputEvents(string eventInstanceIds, string[] eventInstanceId, List<ICommonSFItems> inputEvents)
         {
-            foreach (var l in list)
+            List<ICommonSFItems> filteredInputEvents = new List<ICommonSFItems>();
+            if (!String.IsNullOrEmpty(eventInstanceIds))
             {
-                l.EventInstanceId = l.TaskId;
-                l.TimeStamp = l.History.CreatedUtcTimestamp;
+                foreach (var e in eventInstanceId)
+                {
+                    bool exists = false;
+                    foreach (var inputEvent in inputEvents)
+                    {
+                        if (!String.IsNullOrEmpty(e) && inputEvent.EventInstanceId == e)
+                        {
+                            filteredInputEvents.Add(inputEvent);
+                            exists = true;
+                        }
+                    }
+                    if (!exists)
+                    {
+                        Console.WriteLine($"EventInstanceId {e} does not exist \n");
+                    }
+                }
+                if (filteredInputEvents.Count == 0)
+                {
+                    Environment.Exit(0);
+                }
             }
-            return list;
+
+            return filteredInputEvents;
         }
 
         public static void LoadPlugins()

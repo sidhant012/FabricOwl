@@ -16,9 +16,11 @@ namespace FabricOwlTests
         [TestMethod]
         public void Test_self_APE()
         {
-            string eventInstanceId = "2389d5b0-3fa0-4ab6-b64e-1555893ff38d";
+            string eventInstanceIds = "2389d5b0-3fa0-4ab6-b64e-1555893ff38d";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
             List<ICommonSFItems> inputEvents = getInputEvents();
-            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(inputEvents, eventInstanceId);
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new List<RCAEvents>();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
             string result = "";
@@ -32,9 +34,11 @@ namespace FabricOwlTests
         [TestMethod]
         public void Test_NodeDeactivated()
         {
-            string eventInstanceId = "fcd49c38-cba6-4b76-be3f-4c8c337a3bed";
+            string eventInstanceIds = "fcd49c38-cba6-4b76-be3f-4c8c337a3bed";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
             List<ICommonSFItems> inputEvents = getInputEvents();
-            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(inputEvents, eventInstanceId);
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new List<RCAEvents>();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
             string result = "";
@@ -48,9 +52,11 @@ namespace FabricOwlTests
         [TestMethod]
         public void Test_APE_RepairTask()
         {
-            string eventInstanceId = "80876de0-ae43-4ff0-be18-1070a68670b7";
+            string eventInstanceIds = "80876de0-ae43-4ff0-be18-1070a68670b7";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
             List<ICommonSFItems> inputEvents = getInputEvents();
-            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(inputEvents, eventInstanceId);
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new List<RCAEvents>();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
             string result = "";
@@ -65,9 +71,11 @@ namespace FabricOwlTests
         [TestMethod]
         public void Test_NodeDown_RepairTask()
         {
-            string eventInstanceId = "0209c2ec-e9f8-425d-a332-7b4e65097134";
+            string eventInstanceIds = "0209c2ec-e9f8-425d-a332-7b4e65097134";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
             List<ICommonSFItems> inputEvents = getInputEvents();
-            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(inputEvents, eventInstanceId);
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new List<RCAEvents>();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
             string result = "";
@@ -81,9 +89,11 @@ namespace FabricOwlTests
         [TestMethod]
         public void Test_PartitionReconfigured()
         {
-            string eventInstanceId = "f01732cf-092e-4fcc-b174-a85b03345d30";
+            string eventInstanceIds = "f01732cf-092e-4fcc-b174-a85b03345d30";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
             List<ICommonSFItems> inputEvents = getInputEvents();
-            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(inputEvents, eventInstanceId);
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new List<RCAEvents>();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
             string result = "";
@@ -97,9 +107,11 @@ namespace FabricOwlTests
         [TestMethod]
         public void Test_ClusterReport_NodeDown()
         {
-            string eventInstanceId = "5300a654-9ff0-40c7-8a31-4ab6dc5ed755";
+            string eventInstanceIds = "5300a654-9ff0-40c7-8a31-4ab6dc5ed755";
+            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            string[] eventInstanceId = eventInstanceIds.Split(',');
             List<ICommonSFItems> inputEvents = getInputEvents();
-            List<ICommonSFItems> filteredInputEvents = getFilteredInputEvents(inputEvents, eventInstanceId);
+            List<ICommonSFItems> filteredInputEvents = Base.getFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new List<RCAEvents>();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
             string result = "";
