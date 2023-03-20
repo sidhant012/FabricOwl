@@ -21,7 +21,7 @@ namespace FabricOwl
          * Still ToDo
          *  
          */
-        private static Dictionary<string, IPlugin> Plugins = new Dictionary<string, IPlugin>();
+        protected static Dictionary<string, IPlugin> Plugins = new Dictionary<string, IPlugin>();
         private static string PluginPath = @"..\..\..\..\Plugins";
 
         private static string startTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow.AddDays(-7));
