@@ -25,10 +25,24 @@ namespace FabricOwl.Rules
         const string forceKillPrefix = "Aborting since deactivation failed. ";
 
         //this is the APE json
-        static string APE1 = File.ReadAllText(@"..\..\..\Rules\APE.json");
+        //static string APE1 = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\APE.json");
+        //static string APE1 = File.ReadAllText(@"..\..\..\Rules\APE.json"); 
+        //^ this works for running local, line above works for api requests
+        static string owl = Path.GetFullPath(@"FabricOwl.exe");
+
 
         public static IEnumerable<ConcurrentEventsConfig> generateConfig()
         {
+            //string owl = Path.GetFullPath(@"FabricOwl.exe");
+            string APE1;
+
+            if((Environment.ProcessPath).Equals(owl))
+            {
+                APE1 = File.ReadAllText(@"..\..\..\Rules\APE.json");
+            } else
+            {
+                APE1 = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\APE.json");
+            }
 
             //convert APE to IEnumerable<RelevantEventsConfig> type through Json DeserializeObject
             var APEConvert = JsonConvert.DeserializeObject<IEnumerable<RelevantEventsConfig>>(APE1);
@@ -44,7 +58,18 @@ namespace FabricOwl.Rules
             }
 
             //this is RelatedEventsConfigs that you will insert the converted APE in its respective positions
-            string rulesConfig = File.ReadAllText(@"..\..\..\Rules\ExportedRules.json");
+            //string rulesConfig = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ExportedRules.json");
+            //string rulesConfig = File.ReadAllText(@"..\..\..\Rules\ExportedRules.json"); <-- this works for running local, line above works for api requests
+            string rulesConfig;
+            if ((Environment.ProcessPath).Equals(owl))
+            {
+                rulesConfig = File.ReadAllText(@"..\..\..\Rules\ExportedRules.json");
+            }
+            else
+            {
+                rulesConfig = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ExportedRules.json");
+            }
+
 
             var rules = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(rulesConfig);
 
@@ -67,7 +92,18 @@ namespace FabricOwl.Rules
         private static RelevantEventsConfig generateConfigHelper(string text, string intendedDescription, string expectedPrefix = "")
         {
             //this is generateConfig (the config that needs to be generated)
-            string tempGenerate = File.ReadAllText(@"..\..\..\Rules\ConfigHelperAPE.json");
+            //string tempGenerate = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ConfigHelperAPE.json");
+            //string tempGenerate = File.ReadAllText(@"..\..\..\Rules\ConfigHelperAPE.json"); <-- this works for running local, line above works for api requests
+            string tempGenerate;
+            if ((Environment.ProcessPath).Equals(owl))
+            {
+                tempGenerate = File.ReadAllText(@"..\..\..\Rules\ConfigHelperAPE.json");
+            }
+            else
+            {
+                tempGenerate = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ConfigHelperAPE.json");
+            }
+
             var generated = JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate);
 
             foreach(var prop in generated.PropertyMappings)
