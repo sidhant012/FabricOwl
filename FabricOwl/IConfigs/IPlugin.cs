@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FabricOwl.IConfigs
 {
     public interface IPlugin
     {
-        List<ICommonSFItems> ReturnEvents(List<ICommonSFItems> inputEvents, string startTimeUTC, string endTimeUTC);
+        Task<List<ICommonSFItems>> ReturnEvents(string startTimeUTC, string endTimeUTC);
 
     }
 }

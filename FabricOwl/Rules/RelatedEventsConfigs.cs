@@ -10,7 +10,8 @@ namespace FabricOwl.Rules
 {
     public class RelatedEventsConfigs
     {
-        public static Dictionary<string, string> APEmap = new Dictionary<string, string>{
+        public static Dictionary<string, string> APEmap = new()
+        {
             { "Deactivating application as application contents have changed.", "Stopping code package as application manifest contents have changes due to an app upgrade." },
             { "Deactivating since updating application version failed as part of upgrade.", "Stopping code package as upgrade failed." },
             { "Deactivating as Restart-DeployedCodePackage API invoked.", "Restarting code package as Restart-DeployedCodePackage API was invoked." },
@@ -23,25 +24,19 @@ namespace FabricOwl.Rules
         };
 
         const string forceKillPrefix = "Aborting since deactivation failed. ";
-
-        //this is the APE json
-        //static string APE1 = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\APE.json");
-        //static string APE1 = File.ReadAllText(@"..\..\..\Rules\APE.json"); 
-        //^ this works for running local, line above works for api requests
-        static string owl = Path.GetFullPath(@"FabricOwl.exe");
+        static readonly string owl = Path.GetFullPath(@"FabricOwl.exe");
 
 
-        public static IEnumerable<ConcurrentEventsConfig> generateConfig()
+        public static IEnumerable<ConcurrentEventsConfig> GenerateConfig()
         {
-            //string owl = Path.GetFullPath(@"FabricOwl.exe");
             string APE1;
 
             if((Environment.ProcessPath).Equals(owl))
             {
-                APE1 = File.ReadAllText(@"..\..\..\Rules\APE.json");
+                APE1 = File.ReadAllText(@"Rules\APE.json");
             } else
             {
-                APE1 = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\APE.json");
+                APE1 = File.ReadAllText(@"..\FabricOwl\Rules\APE.json");
             }
 
             //convert APE to IEnumerable<RelevantEventsConfig> type through Json DeserializeObject
@@ -51,23 +46,20 @@ namespace FabricOwl.Rules
             //the in foreach loop push/add (i think I will have to use concat) the return from the helper method to APE
             foreach (var key in APEmap.Keys)
             {
-                var newConfig1 = generateConfigHelper(key, APEmap[key]);
+                var newConfig1 = GenerateConfigHelper(key, APEmap[key]);
                 APEConvert = APEConvert.Concat(new[] { newConfig1 });
-                var newConfig2 = generateConfigHelper(forceKillPrefix + key, APEmap[key], "but not graceful shutdown");
+                var newConfig2 = GenerateConfigHelper(forceKillPrefix + key, APEmap[key], "but not graceful shutdown");
                 APEConvert = APEConvert.Concat(new[] { newConfig2 });
             }
 
-            //this is RelatedEventsConfigs that you will insert the converted APE in its respective positions
-            //string rulesConfig = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ExportedRules.json");
-            //string rulesConfig = File.ReadAllText(@"..\..\..\Rules\ExportedRules.json"); <-- this works for running local, line above works for api requests
             string rulesConfig;
             if ((Environment.ProcessPath).Equals(owl))
             {
-                rulesConfig = File.ReadAllText(@"..\..\..\Rules\ExportedRules.json");
+                rulesConfig = File.ReadAllText(@"Rules\ExportedRules.json");
             }
             else
             {
-                rulesConfig = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ExportedRules.json");
+                rulesConfig = File.ReadAllText(@"..\FabricOwl\Rules\ExportedRules.json");
             }
 
 
@@ -83,25 +75,22 @@ namespace FabricOwl.Rules
             return rules;
         }
 
-        
-        public static IEnumerable<ConcurrentEventsConfig> additionalUserConfig()
+        // To be revaluated for addition at some point
+        public static IEnumerable<ConcurrentEventsConfig> AdditionalUserConfig()
         {
             return null;
         }
 
-        private static RelevantEventsConfig generateConfigHelper(string text, string intendedDescription, string expectedPrefix = "")
+        private static RelevantEventsConfig GenerateConfigHelper(string text, string intendedDescription, string expectedPrefix = "")
         {
-            //this is generateConfig (the config that needs to be generated)
-            //string tempGenerate = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ConfigHelperAPE.json");
-            //string tempGenerate = File.ReadAllText(@"..\..\..\Rules\ConfigHelperAPE.json"); <-- this works for running local, line above works for api requests
             string tempGenerate;
             if ((Environment.ProcessPath).Equals(owl))
             {
-                tempGenerate = File.ReadAllText(@"..\..\..\Rules\ConfigHelperAPE.json");
+                tempGenerate = File.ReadAllText(@"Rules\ConfigHelperAPE.json");
             }
             else
             {
-                tempGenerate = File.ReadAllText(@"..\..\FabricOwl\FabricOwl\Rules\ConfigHelperAPE.json");
+                tempGenerate = File.ReadAllText(@"..\FabricOwl\Rules\ConfigHelperAPE.json");
             }
 
             var generated = JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate);

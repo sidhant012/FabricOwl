@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<EnableDynamicLoading>true</EnableDynamicLoading>
+	<OutputType>Library</OutputType>
+	<Platforms>x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FabricOwl\FabricOwl.csproj" >
+    <ProjectReference Include="..\FabricOwl\FabricOwl.csproj">
 	  <Private>false</Private>
 	  <ExcludeAssets>runtime</ExcludeAssets>
 	</ProjectReference>
