@@ -9,12 +9,12 @@ namespace Api.Controllers
     [ApiController]
     public class FabricOwlController : ControllerBase
     {
-        Base owl = new Base();
+        readonly Base owl = new();
 
         [HttpGet("{eventInstanceIds}")]
         public async Task<string> GetFabricOwl(string eventInstanceIds)
         {
-            List<RCAEvents> simulEvents = owl.getRCA(eventInstanceIds);
+            List<RCAEvents> simulEvents = await owl.GetRCA(eventInstanceIds);
             string result = "";
             foreach (var s in simulEvents)
             {
@@ -27,7 +27,7 @@ namespace Api.Controllers
         public async Task<string> GetFabricOwl(DateTime startTimeUTC, DateTime endTimeUTC)
         {
 
-            List<RCAEvents> simulEvents = owl.getRCA();
+            List<RCAEvents> simulEvents = await owl.GetRCA();
             string result = "";
             foreach (var s in simulEvents)
             { 

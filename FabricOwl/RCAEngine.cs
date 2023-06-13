@@ -14,11 +14,10 @@ namespace FabricOwl
             /*
                 Grab the events that occur concurrently with an inputted current event.
             */
-            List<RCAEvents> simulEvents = new List<RCAEvents>();
+            List<RCAEvents> simulEvents = new();
 
             if (existingEvents != null)
             {
-
                 simulEvents.AddRange(existingEvents);
             }
 
@@ -46,7 +45,7 @@ namespace FabricOwl
                             parsed = (string)GetPropertyValues(inputEvent, config.Result);
                             if (config.ResultTransform != null)
                             {
-                                parsed = Transformations.getTransformations(config.ResultTransform, parsed);
+                                parsed = Transformations.GetTransformations(config.ResultTransform, parsed);
                             }
                             action = parsed;
                         }
@@ -55,7 +54,8 @@ namespace FabricOwl
                         foreach (RelevantEventsConfig relevantEventType in config.RelevantEventsType)
                         {
                             if (relevantEventType.EventType == "self")
-                            { // self referential events logic starts here
+                            { 
+                                // self referential events logic starts here
                                 bool propMaps = true;
                                 var mappings = relevantEventType.PropertyMappings;
                                 foreach (var mapping in mappings)
@@ -65,7 +65,7 @@ namespace FabricOwl
 
                                     if (mapping.SourceTransform != null)
                                     {
-                                        sourceVal = Transformations.getTransformations(mapping.SourceTransform, (string)sourceVal);
+                                        sourceVal = Transformations.GetTransformations(mapping.SourceTransform, (string)sourceVal);
                                     }
 
                                     if (sourceVal == null || targetVal == null || sourceVal != targetVal)
@@ -78,7 +78,7 @@ namespace FabricOwl
                                 {
                                     if (relevantEventType.SelfTransform != null)
                                     {
-                                        parsed = Transformations.getTransformations(relevantEventType.SelfTransform, parsed);
+                                        parsed = Transformations.GetTransformations(relevantEventType.SelfTransform, parsed);
                                     }
 
                                     if (reason == null)
@@ -107,13 +107,13 @@ namespace FabricOwl
                                         var sourceVal = GetPropertyValues(inputEvent, mapping.SourceProperty);
                                         if (mapping.SourceTransform != null)
                                         {
-                                            sourceVal = Transformations.getTransformations(mapping.SourceTransform, (string)sourceVal);
+                                            sourceVal = Transformations.GetTransformations(mapping.SourceTransform, (string)sourceVal);
                                         }
 
                                         var targetVal = GetPropertyValues(iterEvent, mapping.TargetProperty);
                                         if (mapping.TargetTransform != null)
                                         {
-                                            targetVal = Transformations.getTransformations(mapping.TargetTransform, (string)targetVal);
+                                            targetVal = Transformations.GetTransformations(mapping.TargetTransform, (string)targetVal);
                                         }
 
                                         if (sourceVal == null || targetVal == null || !sourceVal.Equals(targetVal))
@@ -151,7 +151,7 @@ namespace FabricOwl
 
                 //Create the tempEvent with all the input values
                 //Look into EventProperties , EventProperties = inputEvent.EventProperties
-                RCAEvents tempEvent = new RCAEvents()
+                RCAEvents tempEvent = new()
                 {
                     Kind = inputEvent.Kind,
                     Name = (string)GetPropertyValues(inputEvent, "Name"),
@@ -167,12 +167,12 @@ namespace FabricOwl
             return simulEvents;
         }
 
-        private RCAEvents FindEvent(List<RCAEvents> events, ICommonSFItems tempEvent)
+        private static RCAEvents FindEvent(List<RCAEvents> events, ICommonSFItems tempEvent)
         {
             return events.FirstOrDefault(e => e.EventInstanceId == tempEvent.EventInstanceId);
         }
 
-        private RCAEvents FindEventReasons(List<RCAEvents> events, RCAEvents reason)
+        private static RCAEvents FindEventReasons(List<RCAEvents> events, RCAEvents reason)
         {
             return events.FirstOrDefault(e => e.EventInstanceId == reason.EventInstanceId);
         }
