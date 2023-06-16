@@ -1,6 +1,8 @@
 ﻿using FabricOwl.IConfigs;
 using FabricOwl.SFObjects;
 using Newtonsoft.Json;
+using Polly;
+using Polly.Retry;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,6 +17,15 @@ namespace HTTPRequests
         private readonly string apiVersion60 = "6.0";
         private readonly string apiVersion72 = "7.2";
         private readonly string clusterURL = "http://localhost:19080";
+
+        private readonly AsyncRetryPolicy retryPolicy = Policy.Handle<HttpRequestException>()
+            .Or<TimeoutException>()
+            .WaitAndRetryAsync(
+                new[]
+                {
+                    TimeSpan.FromSeconds(1),
+                    TimeSpan.FromSeconds(3),
+                });
         public async Task<List<ICommonSFItems>> GetApplicationsEventList(string startTimeUTC, string endTimeUTC)
         {
             List<ICommonSFItems> inputEvents = new();
@@ -22,7 +33,8 @@ namespace HTTPRequests
             // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationseventlist
             var requestUri = new Uri($"{clusterURL}/EventsStore/Applications/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
 
-            var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(await GetEvents(requestUri));
+            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(eventList);
             if (ApplicationConvertEvents == null || ApplicationConvertEvents.Count == 0)
             {
                 return inputEvents;
@@ -41,7 +53,8 @@ namespace HTTPRequests
             // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getclustereventlist
             var requestUri = new Uri($"{clusterURL}/EventsStore/Cluster/Events?api-version={apiVersion64}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
 
-            var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(await GetEvents(requestUri));
+            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(eventList);
             if (ClusterConvertEvents == null || ClusterConvertEvents.Count == 0)
             {
                 return inputEvents;
@@ -61,7 +74,8 @@ namespace HTTPRequests
             // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getnodeseventlist
             var requestUri = new Uri($"{clusterURL}/EventsStore/Nodes/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
 
-            var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(await GetEvents(requestUri));
+            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(eventList);
             if (NodeConvertEvents == null || NodeConvertEvents.Count == 0)
             {
                 return inputEvents;
@@ -83,7 +97,8 @@ namespace HTTPRequests
             //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getrepairtasklist
             var requestUri = new Uri($"{clusterURL}/$/GetRepairTaskList?api-version={apiVersion60}");
 
-            var RepairConvertEvents = JsonConvert.DeserializeObject<List<RepairItem>>(await GetEvents(requestUri));
+            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            var RepairConvertEvents = JsonConvert.DeserializeObject<List<RepairItem>>(eventList);
             if(RepairConvertEvents == null || RepairConvertEvents.Count == 0)
             {
                 return inputEvents;
@@ -104,7 +119,8 @@ namespace HTTPRequests
             //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionseventlist
             var requestUri = new Uri($"{clusterURL}/EventsStore/Partitions/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
 
-            var PartitionConvertEvents = JsonConvert.DeserializeObject<List<PartitionItem>>(await GetEvents(requestUri));
+            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            var PartitionConvertEvents = JsonConvert.DeserializeObject<List<PartitionItem>>(eventList);
             if (PartitionConvertEvents == null || PartitionConvertEvents.Count == 0)
             {
                 return inputEvents;
@@ -134,7 +150,7 @@ namespace HTTPRequests
             try
             {
                 using HttpClient httpClient = new();
-                httpClient.Timeout = TimeSpan.FromSeconds(5);
+                httpClient.Timeout = TimeSpan.FromSeconds(30);
 
                 var request = await httpClient.GetAsync(requestUri);
 

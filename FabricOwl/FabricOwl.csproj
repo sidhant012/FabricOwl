@@ -2,9 +2,27 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
 	<Platforms>x64</Platforms>  
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Rules\APE.json" />
+    <None Remove="Rules\ConfigHelperAPE.json" />
+    <None Remove="Rules\ExportedRules.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Rules\APE.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rules\ConfigHelperAPE.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rules\ExportedRules.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>  
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="6.1.1436" />
@@ -15,15 +33,10 @@
     <None Update="Plugins\HTTPRequests.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Rules\APE.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Rules\ConfigHelperAPE.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Rules\ExportedRules.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(ProjectDir)bin\x64\Debug\net7.0\FabricOwl.dll&quot; &quot;C:\Users\sibhatia\source\repos\TestingFabricOwlLibrary\TestingFabricOwlLibrary\bin\Debug\net7.0&quot;" />
+  </Target>
 
 </Project>

@@ -7,10 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Polly" Version="7.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FabricOwl\FabricOwl.csproj">
 	  <Private>false</Private>
 	  <ExcludeAssets>runtime</ExcludeAssets>
 	</ProjectReference>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy &quot;$(ProjectDir)bin\x64\Debug\net7.0\HTTPRequests.dll&quot; &quot;$(SolutionDir)FabricOwl\Plugins&quot;" />
+  </Target>
 
 </Project>
