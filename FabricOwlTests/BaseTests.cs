@@ -23,12 +23,5 @@ namespace FabricOwlTests
             string result = stringWriter.ToString();
             Assert.AreEqual(result.Trim(), "EventInstanceId fc33417b-b1ca-429f-8d9f-01e9fc356d76 does not exist");
         }
-
-        [TestMethod]
-        public void Test_LoadPlugins()
-        {
-            LoadPlugins();
-            Assert.IsTrue(Plugins.Count != 0);
-        }
     }
 }

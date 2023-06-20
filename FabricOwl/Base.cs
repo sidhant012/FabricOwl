@@ -1,29 +1,18 @@
 ﻿using FabricOwl.IConfigs;
 using FabricOwl.Rules;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
 using System.Threading.Tasks;
 
 namespace FabricOwl
 {
     public class Base
     {
-
-        /*
-         * Still ToDo
-         *  
-         */
-        protected static Dictionary<string, IPlugin> Plugins = new();
-        private static string PluginPath = @"Plugins";
+        readonly HTTPRequest requests = new();
 
         private static readonly string startTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow.AddDays(-7));
         private static readonly string endTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow);
-        static Boolean load = true;
         //Another clusterURL to use once you have security credentials https://winlrc-sfrp-01.eastus.cloudapp.azure.com:19080
 
         public async Task<List<RCAEvents>> GetRCA(string eventInstanceIds = "")
@@ -53,18 +42,7 @@ namespace FabricOwl
                 }
             }*/
 
-            List<ICommonSFItems> inputEvents = new();
-
-            if (load)
-            {
-                LoadPlugins();
-                load = false;
-            }
-
-            foreach (var key in Plugins.Keys)
-            {
-                inputEvents.AddRange(await Plugins[key].ReturnEvents(startTimeUTC, endTimeUTC));
-            }
+            List<ICommonSFItems> inputEvents = await requests.ReturnEvents(startTimeUTC, endTimeUTC);
 
             List<ICommonSFItems> filteredInputEvents = GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
 
@@ -107,41 +85,6 @@ namespace FabricOwl
             }
 
             return filteredInputEvents;
-        }
-
-        public static void LoadPlugins()
-        {
-            try
-            {
-                if (!Path.IsPathRooted(PluginPath))
-                {
-                    PluginPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + PluginPath;
-                }
-                foreach (var dll in Directory.GetFiles(PluginPath, "*.dll"))
-                {
-                    AssemblyLoadContext assemblyLoadContext = new(dll);
-                    Assembly assembly = assemblyLoadContext.LoadFromAssemblyPath(dll);
-                    for (int i = 0; i < assembly.GetTypes().Length; i++)
-                    {
-                        try
-                        {
-                            var plugin = Activator.CreateInstance(assembly.GetTypes()[i]) as IPlugin;
-                            if (plugin is IPlugin)
-                            {
-                                Plugins.Add(Path.GetFileNameWithoutExtension(dll), plugin);
-                            }
-                        }
-                        catch (MissingMethodException)
-                        {
-                            continue;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex) when (ex is ArgumentException || ex is DirectoryNotFoundException)
-            {
-                // Add log message here
-            }
         }
     }
 }
