@@ -18,15 +18,17 @@ namespace HTTPRequests
         private readonly string apiVersion72 = "7.2";
         private readonly string clusterURL = "http://localhost:19080";
 
-        private readonly AsyncRetryPolicy retryPolicy = Policy.Handle<HttpRequestException>()
-            .Or<TimeoutException>()
-            .WaitAndRetryAsync(
-                new[]
-                {
-                    TimeSpan.FromSeconds(1),
-                    TimeSpan.FromSeconds(3),
-                    TimeSpan.FromSeconds(5),
-                });
+        // Don't catch the exceptions that you want Polly to retry.
+        private readonly AsyncRetryPolicy retryPolicy =
+            Policy.Handle<HttpRequestException>()
+                  .Or<TimeoutException>()
+                  .WaitAndRetryAsync(
+                    new[]
+                    {
+                        TimeSpan.FromSeconds(1),
+                        TimeSpan.FromSeconds(3),
+                        TimeSpan.FromSeconds(5),
+                    });
 
         public async Task<List<ICommonSFItems>> GetApplicationsEventList(string startTimeUTC, string endTimeUTC)
         {
@@ -155,7 +157,7 @@ namespace HTTPRequests
 
                 return data;
             } 
-            catch (Exception e) when (e is ArgumentException or HttpRequestException or TaskCanceledException or TimeoutException)
+            catch (Exception e) when (e is ArgumentException or TaskCanceledException)
             {
                 
             }

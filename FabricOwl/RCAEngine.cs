@@ -1,8 +1,6 @@
 ﻿using FabricOwl.IConfigs;
 using FabricOwl.Rules;
-using System;
 using System.Collections.Generic;
-using System.Fabric.Management.ServiceModel;
 using System.Linq;
 
 namespace FabricOwl
