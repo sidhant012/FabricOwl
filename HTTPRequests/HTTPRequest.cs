@@ -97,7 +97,7 @@ namespace HTTPRequests
             // Get Request to return all RepairTasks events. The response is list of ReapirTasksEvent objects
             //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getrepairtasklist
             Uri requestUri = new($"{clusterURL}/$/GetRepairTaskList?api-version={apiVersion60}");
-            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri, 5));
             var RepairConvertEvents = JsonConvert.DeserializeObject<List<RepairItem>>(eventList);
             if(RepairConvertEvents == null || RepairConvertEvents.Count == 0)
             {
@@ -142,13 +142,13 @@ namespace HTTPRequests
             return list;
         }
 
-        public static async Task<string> GetEvents(Uri requestUri)
+        public static async Task<string> GetEvents(Uri requestUri, int timeoutSeconds = 10)
         {
             string data = string.Empty;
             try
             {
                 using HttpClient httpClient = new();
-                httpClient.Timeout = TimeSpan.FromSeconds(30);
+                httpClient.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
                 var request = await httpClient.GetAsync(requestUri);
                 using var webResponse = request.Content;
                 using var webStream = await webResponse.ReadAsStreamAsync();
