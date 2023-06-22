@@ -18,7 +18,7 @@ namespace FabricOwlTests
         {
             List<ICommonSFItems> inputEvents = new();
 
-            // reading in raw data files
+            // Reading in raw data files.
             var NodeData = File.ReadAllText(@"TestData\NodeEventsTestData.json");
             var ApplicationData = File.ReadAllText(@"TestData\ApplicationEventsTestData.json");
             var RepairTaskData = File.ReadAllText(@"TestData\RepairTasksTestData.json");
