@@ -1,6 +1,7 @@
 ﻿using FabricOwl;
 using FabricOwl.IConfigs;
 using FabricOwl.Rules;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
 namespace FabricOwlTests
@@ -8,10 +9,16 @@ namespace FabricOwlTests
     [TestClass]
     public class RCAEngineTests
     {
-        RCAEngine rca = new();
-        static readonly string config = File.ReadAllText(@"ConfigData\generatedConfig.txt");
-        IEnumerable<ConcurrentEventsConfig> testGenerateConfig = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(config);
+        private readonly RCAEngine rca = new();
+        private static readonly string config = File.ReadAllText(@"ConfigData\generatedConfig.txt");
+        private IEnumerable<ConcurrentEventsConfig>? testGenerateConfig = null;
 
+        [TestInitialize]
+        public void InitTests()
+        {
+            Assert.IsTrue(JsonHelper.TryDeserializeObject(config, out testGenerateConfig, true));
+        }
+        
         [TestMethod]
         public void Test_self_APE()
         {

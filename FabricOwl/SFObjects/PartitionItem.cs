@@ -5,7 +5,7 @@ using System;
 namespace FabricOwl.SFObjects
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class PartitionItem : IPartitionItem
+    public class PartitionItem : ICommonSFItems
     {
         public string SourceId { get; set; }
         public string Property { get; set; }

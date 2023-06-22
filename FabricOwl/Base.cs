@@ -18,8 +18,8 @@ namespace FabricOwl
          *  
          */
         protected static readonly Dictionary<string, IPlugin> Plugins = new();
-        private static string PluginPath = @"Plugins";
-
+        private const string PluginFolderName = "Plugins";
+        private static string PluginPath;
         private static readonly string startTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow.AddDays(-7));
         private static readonly string endTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow);
         static bool load = true;
@@ -32,7 +32,7 @@ namespace FabricOwl
             eventInstanceIds = string.Concat(eventInstanceIds.Where(c => !char.IsWhiteSpace(c)));
             string[] eventInstanceId = eventInstanceIds.Split(',');
 
-            // generating the config to be used in RCA Engine
+            // Generating the config to be used in RCA Engine.
             IEnumerable<ConcurrentEventsConfig> testGenerateConfig = RelatedEventsConfigs.GenerateConfig();
 
 
@@ -99,7 +99,7 @@ namespace FabricOwl
                     }
                     if (!exists)
                     {
-                        // Change this to Log message
+                        // Change this to Log message.
                         Console.WriteLine($"EventInstanceId {e} does not exist \n");
                     }
                 }
@@ -112,10 +112,11 @@ namespace FabricOwl
         {
             try
             {
-                if (!Path.IsPathRooted(PluginPath))
+                if (!Path.IsPathRooted(PluginFolderName))
                 {
-                    PluginPath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath), PluginPath);
+                    PluginPath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath), PluginFolderName);
                 }
+
                 foreach (var dll in Directory.GetFiles(PluginPath, "*.dll"))
                 {
                     AssemblyLoadContext assemblyLoadContext = new(dll);

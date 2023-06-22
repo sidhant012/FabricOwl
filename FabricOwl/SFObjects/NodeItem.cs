@@ -5,7 +5,7 @@ using System;
 namespace FabricOwl.SFObjects
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class NodeItem : INodeItem
+    public class NodeItem : ICommonSFItems
     {
         public string NodeInstanceId { get; set; }
         public string SourceId { get; set; }

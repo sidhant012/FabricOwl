@@ -8,9 +8,6 @@ namespace Api.Controllers
     [ApiController]
     public class FabricOwlController : ControllerBase
     {
-        // what is this for?
-        readonly Base owl = new();
-
         [HttpGet("{eventInstanceIds}")]
         public async Task<string> GetFabricOwl(string eventInstanceIds)
         {

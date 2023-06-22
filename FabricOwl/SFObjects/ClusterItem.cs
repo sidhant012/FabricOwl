@@ -5,7 +5,7 @@ using System;
 namespace FabricOwl.SFObjects
 {
     [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
-    public class ClusterItem : IClusterItem
+    public class ClusterItem : ICommonSFItems
     {
         public string TargetClusterVersion { get; set; }
         public double OverallUpgradeElapsedTimeInMs { get; set; }

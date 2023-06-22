@@ -19,11 +19,11 @@ namespace FabricOwlTests
             List<ICommonSFItems> inputEvents = new();
 
             // Reading in raw data files.
-            var NodeData = File.ReadAllText(@"TestData\NodeEventsTestData.json");
-            var ApplicationData = File.ReadAllText(@"TestData\ApplicationEventsTestData.json");
-            var RepairTaskData = File.ReadAllText(@"TestData\RepairTasksTestData.json");
-            var ClusterData = File.ReadAllText(@"TestData\ClusterEventsTestData.json");
-            var PartitionData = File.ReadAllText(@"TestData\PartitionEventsTestData.json");
+            string NodeData = File.ReadAllText(@"TestData\NodeEventsTestData.json");
+            string ApplicationData = File.ReadAllText(@"TestData\ApplicationEventsTestData.json");
+            string RepairTaskData = File.ReadAllText(@"TestData\RepairTasksTestData.json");
+            string ClusterData = File.ReadAllText(@"TestData\ClusterEventsTestData.json");
+            string PartitionData = File.ReadAllText(@"TestData\PartitionEventsTestData.json");
 
             var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(NodeData);
             var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(ApplicationData);

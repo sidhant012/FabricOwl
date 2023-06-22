@@ -1,13 +1,15 @@
 ﻿using FabricOwl.IConfigs;
 using FabricOwl.Rules;
+using System;
 using System.Collections.Generic;
+using System.Fabric.Management.ServiceModel;
 using System.Linq;
 
 namespace FabricOwl
 {
     public class RCAEngine
     {
-        //Use this class to create the RCAEngine
+        // Use this class to create the RCAEngine.
         public List<RCAEvents> GetSimultaneousEventsForEvent(
                 IEnumerable<ConcurrentEventsConfig> configs,
                 List<ICommonSFItems> inputEvents,
@@ -15,7 +17,7 @@ namespace FabricOwl
                 List<RCAEvents> existingEvents = null)
         {
          
-            // Grab the events that occur concurrently with an inputted current event.
+            // Grab the events that occur concurrently with an inputted current event. \\
 
             List<RCAEvents> simulEvents = new();
 
@@ -32,14 +34,14 @@ namespace FabricOwl
                     continue;
                 }
 
-                string action = "";
-                string reasonForEvent = "";
+                string action = string.Empty;
+                string reasonForEvent = string.Empty;
                 RCAEvents reason = null;
-                string moreSpecificReason = "";
+                string moreSpecificReason = string.Empty;
 
                 foreach (ConcurrentEventsConfig config in configs)
                 {
-                    string parsed = "";
+                    string parsed = string.Empty;
                     if (config.EventType == inputEvent.Kind)
                     {
                         // Iterate through all events to find relevant ones.
@@ -189,7 +191,7 @@ namespace FabricOwl
         {
             if (propName.Contains('.')) // complex type nested
             {
-                var temp = propName.Split(new char[] { '.' }, 2);
+                string[] temp = propName.Split(new char[] { '.' }, 2);
                 return GetPropertyValues((ICommonSFItems)GetPropertyValues(src, temp[0]), temp[1]);
             }
             else

@@ -25,6 +25,7 @@ namespace HTTPRequests
                 {
                     TimeSpan.FromSeconds(1),
                     TimeSpan.FromSeconds(3),
+                    TimeSpan.FromSeconds(5),
                 });
 
         public async Task<List<ICommonSFItems>> GetApplicationsEventList(string startTimeUTC, string endTimeUTC)
@@ -154,9 +155,9 @@ namespace HTTPRequests
 
                 return data;
             } 
-            catch (Exception e) when (e is HttpRequestException || e is TaskCanceledException || e is TimeoutException)
+            catch (Exception e) when (e is ArgumentException or HttpRequestException or TaskCanceledException or TimeoutException)
             {
-                // Log? Retry? (Timeout/HttpRequestException are retryable failures).
+                
             }
             return data;
         }
