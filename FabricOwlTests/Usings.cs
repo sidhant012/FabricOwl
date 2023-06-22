@@ -31,7 +31,12 @@ namespace FabricOwlTests
             var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(ClusterData);
             var PartitionConvertEvents = JsonConvert.DeserializeObject<List<PartitionItem>>(PartitionData);
 
-            inputEvents.AddRange(NodeConvertEvents);
+            // Do this for the rest of these (null checks).
+            if (NodeConvertEvents != null)
+            {
+                inputEvents.AddRange(NodeConvertEvents);
+            }
+
             inputEvents.AddRange(ApplicationConvertEvents);
             inputEvents.AddRange(SetRepairValues(RepairConvertEvents));
             inputEvents.AddRange(ClusterConvertEvents);

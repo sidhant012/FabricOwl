@@ -8,12 +8,15 @@ namespace FabricOwl
     public class RCAEngine
     {
         //Use this class to create the RCAEngine
-        public List<RCAEvents> GetSimultaneousEventsForEvent
-    (IEnumerable<ConcurrentEventsConfig> configs, List<ICommonSFItems> inputEvents, List<ICommonSFItems> events, List<RCAEvents>? existingEvents = null)
+        public List<RCAEvents> GetSimultaneousEventsForEvent(
+                IEnumerable<ConcurrentEventsConfig> configs,
+                List<ICommonSFItems> inputEvents,
+                List<ICommonSFItems> events,
+                List<RCAEvents> existingEvents = null)
         {
-            /*
-                Grab the events that occur concurrently with an inputted current event.
-            */
+         
+            // Grab the events that occur concurrently with an inputted current event.
+
             List<RCAEvents> simulEvents = new();
 
             if (existingEvents != null)
@@ -21,7 +24,7 @@ namespace FabricOwl
                 simulEvents.AddRange(existingEvents);
             }
 
-            // iterate through all the input events
+            // Iterate through all the input events.
             foreach (var inputEvent in inputEvents)
             {
                 if (FindEvent(simulEvents, inputEvent) != null)
@@ -29,17 +32,17 @@ namespace FabricOwl
                     continue;
                 }
 
-                var action = "";
-                var reasonForEvent = "";
-                RCAEvents? reason = null;
-                var moreSpecificReason = "";
+                string action = "";
+                string reasonForEvent = "";
+                RCAEvents reason = null;
+                string moreSpecificReason = "";
 
                 foreach (ConcurrentEventsConfig config in configs)
                 {
                     string parsed = "";
                     if (config.EventType == inputEvent.Kind)
                     {
-                        // iterate through all events to find relevant ones
+                        // Iterate through all events to find relevant ones.
                         if (GetPropertyValues(inputEvent, config.Result) != null)
                         {
                             parsed = (string)GetPropertyValues(inputEvent, config.Result);
@@ -55,7 +58,7 @@ namespace FabricOwl
                         {
                             if (relevantEventType.EventType == "self")
                             { 
-                                // self referential events logic starts here
+                                // Self referential events logic starts here.
                                 bool propMaps = true;
                                 var mappings = relevantEventType.PropertyMappings;
                                 foreach (var mapping in mappings)
@@ -94,12 +97,15 @@ namespace FabricOwl
 
                                     reasonForEvent = action;
                                 }
-                            } //self referential events logic ends here
-                            foreach (var iterEvent in events) //iterate through other events to find relationships
+                            }
+                            // Self referential events logic ends here. 
+
+                            // Iterate through other events to find relationships.
+                            foreach (var iterEvent in events)
                             {
                                 if (relevantEventType.EventType == iterEvent.Kind)
                                 {
-                                    // see if each property mapping holds true
+                                    // See if each property mapping holds true.
                                     bool valid = true;
                                     var mappings = relevantEventType.PropertyMappings;
                                     foreach (var mapping in mappings)
@@ -120,7 +126,8 @@ namespace FabricOwl
                                         {
                                             valid = false;
                                         }
-                                    } //done mapping values and transformations
+                                    } 
+                                    // Done mapping values and transformations.
 
                                     if (valid)
                                     {
@@ -131,7 +138,7 @@ namespace FabricOwl
                                         }
                                         else
                                         {
-                                            //generate events to build chain
+                                            // Generate events to build chain.
                                             var reasons = GetSimultaneousEventsForEvent(configs, new List<ICommonSFItems> { iterEvent }, events, simulEvents);
                                             foreach (RCAEvents r in reasons)
                                             {
@@ -149,8 +156,8 @@ namespace FabricOwl
                     }
                 }
 
-                //Create the tempEvent with all the input values
-                //Look into EventProperties , EventProperties = inputEvent.EventProperties
+                // Create the tempEvent with all the input values.
+                // Look into EventProperties , EventProperties = inputEvent.EventProperties.
                 RCAEvents tempEvent = new()
                 {
                     Kind = inputEvent.Kind,
@@ -177,11 +184,10 @@ namespace FabricOwl
             return events.FirstOrDefault(e => e.EventInstanceId == reason.EventInstanceId);
         }
 
-        //Rewrite the Utils.result method
+        // Rewrite the Utils.result method.
         public object GetPropertyValues(ICommonSFItems src, string propName)
         {
-
-            if (propName.Contains("."))//complex type nested
+            if (propName.Contains('.')) // complex type nested
             {
                 var temp = propName.Split(new char[] { '.' }, 2);
                 return GetPropertyValues((ICommonSFItems)GetPropertyValues(src, temp[0]), temp[1]);
@@ -189,7 +195,7 @@ namespace FabricOwl
             else
             {
                 var prop = src.GetType().GetProperty(propName);
-                return prop != null ? prop.GetValue(src, null) : null;
+                return prop?.GetValue(src, null);
             }
         }
     }

@@ -1,10 +1,4 @@
-﻿using FabricOwl.SFObjects;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace FabricOwl.IConfigs
 {
@@ -14,6 +8,5 @@ namespace FabricOwl.IConfigs
         string EventInstanceId { get; set; }
         string DataType { get; set; }
         DateTime TimeStamp { get; set; }
-
     }
 }
