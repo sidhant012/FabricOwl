@@ -10,15 +10,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//remove if statement and its contents
+// Configure the HTTP request pipeline. Remove if statement and its contents.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-//In the lauchSettings file remove launchUrl, and change launchBrowser to false
+// In the lauchSettings file remove launchUrl, and change launchBrowser to false.
 
 app.UseHttpsRedirection();
 

@@ -9,25 +9,25 @@ namespace FabricOwl
 {
     public class Base
     {
-        readonly HTTPRequest requests = new();
+        static readonly HTTPRequest requests = new();
 
         private static readonly string startTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow.AddDays(-7));
         private static readonly string endTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow);
         //Another clusterURL to use once you have security credentials https://winlrc-sfrp-01.eastus.cloudapp.azure.com:19080
 
-        public async Task<List<RCAEvents>> GetRCA(string eventInstanceIds = "")
+        public static async Task<List<RCAEvents>> GetRCA(string eventInstanceIds = "")
         {
             RCAEngine testRCA = new();
 
-            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            eventInstanceIds = string.Concat(eventInstanceIds.Where(c => !char.IsWhiteSpace(c)));
             string[] eventInstanceId = eventInstanceIds.Split(',');
 
-            // generating the config to be used in RCA Engine
+            // Generating the config to be used in RCA Engine
             IEnumerable<ConcurrentEventsConfig> testGenerateConfig = RelatedEventsConfigs.GenerateConfig();
 
 
             // generating the config to be used in RCA Engine based on user input TOTHINK: to add later
-/*            if (!String.IsNullOrWhiteSpace(additionalConfig) && File.Exists(additionalConfig))
+/*            if (!string.IsNullOrWhiteSpace(additionalConfig) && File.Exists(additionalConfig))
             {
                 try
                 {
@@ -63,14 +63,14 @@ namespace FabricOwl
         public static List<ICommonSFItems> GetFilteredInputEvents(string eventInstanceIds, string[] eventInstanceId, List<ICommonSFItems> inputEvents)
         {
             List<ICommonSFItems> filteredInputEvents = new();
-            if (!String.IsNullOrWhiteSpace(eventInstanceIds))
+            if (!string.IsNullOrWhiteSpace(eventInstanceIds))
             {
                 foreach (var e in eventInstanceId)
                 {
                     bool exists = false;
                     foreach (var inputEvent in inputEvents)
                     {
-                        if (!String.IsNullOrWhiteSpace(e) && inputEvent.EventInstanceId == e)
+                        if (!string.IsNullOrWhiteSpace(e) && inputEvent.EventInstanceId == e)
                         {
                             filteredInputEvents.Add(inputEvent);
                             exists = true;
@@ -78,7 +78,7 @@ namespace FabricOwl
                     }
                     if (!exists)
                     {
-                        // Change this to Log message
+                        // Change this to Log message.
                         Console.WriteLine($"EventInstanceId {e} does not exist \n");
                     }
                 }

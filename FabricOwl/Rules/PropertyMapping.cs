@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FabricOwl.Rules
 {
@@ -13,10 +11,16 @@ namespace FabricOwl.Rules
         [JsonProperty("targetProperty")]
         public string TargetProperty { get; set; }
 
+        /// <summary>
+        /// Used to describe source transformations that we want to make.
+        /// </summary>
         [JsonProperty("sourceTransform")]
-        public IEnumerable<Transform> SourceTransform { get; set; } //used to describe source transformations that we want to make
+        public IEnumerable<Transform> SourceTransform { get; set; }
 
+        /// <summary>
+        /// Used to describe target transformations that we want to make
+        /// </summary>
         [JsonProperty("targetTransform")]
-        public IEnumerable<Transform> TargetTransform { get; set; } //used to describe target transformations that we want to make
+        public IEnumerable<Transform> TargetTransform { get; set; }
     }
 }

@@ -1,20 +1,17 @@
 ﻿using FabricOwl.Rules;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace FabricOwl
 {
     public class Transformations
     {
-        public static Dictionary<string, Func<string, string, string>> transformationKey = new()
+        public static readonly Dictionary<string, Func<string, string, string>> transformationKey = new()
         {
-            { "trimFront", Transformations.TrimFront },
-            { "trimBack", Transformations.TrimBack },
-            { "prefix", Transformations.Prefix },
-            { "trimWhiteSpace", (parsed, value) => Transformations.TrimWhiteSpace(parsed) }
+            { "trimFront", TrimFront },
+            { "trimBack", TrimBack },
+            { "prefix", Prefix },
+            { "trimWhiteSpace", (parsed, value) => TrimWhiteSpace(parsed) }
         };
         public static string TrimFront(string parsed, string value)
         {
@@ -23,7 +20,7 @@ namespace FabricOwl
             {
                 return parsed;
             }
-            return parsed.Substring(index + 1);
+            return parsed[(index + 1)..];
         }
 
         public static string TrimBack(string parsed, string value)
@@ -33,14 +30,16 @@ namespace FabricOwl
             {
                 return parsed;
             }
-            return parsed.Substring(0, index);
+            return parsed[..index];
         }
 
-        public static string TrimWhiteSpace(string parsed) {
+        public static string TrimWhiteSpace(string parsed) 
+        {
             return parsed.Trim();
         }
 
-        public static string Prefix(string parsed, string value) {
+        public static string Prefix(string parsed, string value) 
+        {
             return value + parsed;
         }
 
@@ -53,7 +52,8 @@ namespace FabricOwl
                 if (transformationKey.ContainsKey(func))
                 {
                     parsed = transformationKey[func](parsed, (string)value);
-                } else
+                } 
+                else
                 {
                     throw new Exception("Method " + func + " is not implemented.");
                 }
