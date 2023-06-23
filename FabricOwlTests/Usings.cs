@@ -18,12 +18,12 @@ namespace FabricOwlTests
         {
             List<ICommonSFItems> inputEvents = new();
 
-            // reading in raw data files
-            var NodeData = File.ReadAllText(@"TestData\NodeEventsTestData.json");
-            var ApplicationData = File.ReadAllText(@"TestData\ApplicationEventsTestData.json");
-            var RepairTaskData = File.ReadAllText(@"TestData\RepairTasksTestData.json");
-            var ClusterData = File.ReadAllText(@"TestData\ClusterEventsTestData.json");
-            var PartitionData = File.ReadAllText(@"TestData\PartitionEventsTestData.json");
+            // Reading in raw data files.
+            string NodeData = File.ReadAllText(@"TestData\NodeEventsTestData.json");
+            string ApplicationData = File.ReadAllText(@"TestData\ApplicationEventsTestData.json");
+            string RepairTaskData = File.ReadAllText(@"TestData\RepairTasksTestData.json");
+            string ClusterData = File.ReadAllText(@"TestData\ClusterEventsTestData.json");
+            string PartitionData = File.ReadAllText(@"TestData\PartitionEventsTestData.json");
 
             var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(NodeData);
             var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(ApplicationData);
@@ -31,7 +31,12 @@ namespace FabricOwlTests
             var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(ClusterData);
             var PartitionConvertEvents = JsonConvert.DeserializeObject<List<PartitionItem>>(PartitionData);
 
-            inputEvents.AddRange(NodeConvertEvents);
+            // Do this for the rest of these (null checks).
+            if (NodeConvertEvents != null)
+            {
+                inputEvents.AddRange(NodeConvertEvents);
+            }
+
             inputEvents.AddRange(ApplicationConvertEvents);
             inputEvents.AddRange(SetRepairValues(RepairConvertEvents));
             inputEvents.AddRange(ClusterConvertEvents);

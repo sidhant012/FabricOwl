@@ -1,5 +1,4 @@
 ﻿using FabricOwl;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -9,13 +8,11 @@ namespace Api.Controllers
     [ApiController]
     public class FabricOwlController : ControllerBase
     {
-        readonly Base owl = new();
-
         [HttpGet("{eventInstanceIds}")]
         public async Task<string> GetFabricOwl(string eventInstanceIds)
         {
-            List<RCAEvents> simulEvents = await owl.GetRCA(eventInstanceIds);
-            string result = "";
+            List<RCAEvents> simulEvents = await Base.GetRCA(eventInstanceIds);
+            string result = string.Empty;
             foreach (var s in simulEvents)
             {
                 result += JsonConvert.SerializeObject(s, Formatting.Indented) + "\n";
@@ -27,8 +24,8 @@ namespace Api.Controllers
         public async Task<string> GetFabricOwl(DateTime startTimeUTC, DateTime endTimeUTC)
         {
 
-            List<RCAEvents> simulEvents = await owl.GetRCA();
-            string result = "";
+            List<RCAEvents> simulEvents = await Base.GetRCA();
+            string result = string.Empty;
             foreach (var s in simulEvents)
             { 
                 if (s.TimeStamp >= startTimeUTC && s.TimeStamp <= endTimeUTC)
@@ -38,7 +35,6 @@ namespace Api.Controllers
             }
 
             return result;
-            }
-
+        }
     }
 }

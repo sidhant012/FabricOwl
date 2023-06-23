@@ -1,6 +1,5 @@
 ﻿using FabricOwl.IConfigs;
 using FabricOwl.Rules;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,27 +17,27 @@ namespace FabricOwl
          * Still ToDo
          *  
          */
-        protected static Dictionary<string, IPlugin> Plugins = new();
-        private static string PluginPath = @"Plugins";
-
+        protected static readonly Dictionary<string, IPlugin> Plugins = new();
+        private const string PluginFolderName = "Plugins";
+        private static string PluginPath;
         private static readonly string startTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow.AddDays(-7));
         private static readonly string endTimeUTC = string.Format("{0:yyyy-MM-ddTHH:mm:ssZ}", DateTime.UtcNow);
-        static Boolean load = true;
-        //Another clusterURL to use once you have security credentials https://winlrc-sfrp-01.eastus.cloudapp.azure.com:19080
+        static bool load = true;
+        // Another clusterURL to use once you have security credentials https://winlrc-sfrp-01.eastus.cloudapp.azure.com:19080
 
-        public async Task<List<RCAEvents>> GetRCA(string eventInstanceIds = "")
+        public static async Task<List<RCAEvents>> GetRCA(string eventInstanceIds = "")
         {
             RCAEngine testRCA = new();
 
-            eventInstanceIds = String.Concat(eventInstanceIds.Where(c => !Char.IsWhiteSpace(c)));
+            eventInstanceIds = string.Concat(eventInstanceIds.Where(c => !char.IsWhiteSpace(c)));
             string[] eventInstanceId = eventInstanceIds.Split(',');
 
-            // generating the config to be used in RCA Engine
+            // Generating the config to be used in RCA Engine.
             IEnumerable<ConcurrentEventsConfig> testGenerateConfig = RelatedEventsConfigs.GenerateConfig();
 
 
             // generating the config to be used in RCA Engine based on user input TOTHINK: to add later
-/*            if (!String.IsNullOrWhiteSpace(additionalConfig) && File.Exists(additionalConfig))
+/*            if (!string.IsNullOrWhiteSpace(additionalConfig) && File.Exists(additionalConfig))
             {
                 try
                 {
@@ -85,14 +84,14 @@ namespace FabricOwl
         public static List<ICommonSFItems> GetFilteredInputEvents(string eventInstanceIds, string[] eventInstanceId, List<ICommonSFItems> inputEvents)
         {
             List<ICommonSFItems> filteredInputEvents = new();
-            if (!String.IsNullOrWhiteSpace(eventInstanceIds))
+            if (!string.IsNullOrWhiteSpace(eventInstanceIds))
             {
                 foreach (var e in eventInstanceId)
                 {
                     bool exists = false;
                     foreach (var inputEvent in inputEvents)
                     {
-                        if (!String.IsNullOrWhiteSpace(e) && inputEvent.EventInstanceId == e)
+                        if (!string.IsNullOrWhiteSpace(e) && inputEvent.EventInstanceId == e)
                         {
                             filteredInputEvents.Add(inputEvent);
                             exists = true;
@@ -100,7 +99,7 @@ namespace FabricOwl
                     }
                     if (!exists)
                     {
-                        // Change this to Log message
+                        // Change this to Log message.
                         Console.WriteLine($"EventInstanceId {e} does not exist \n");
                     }
                 }
@@ -113,10 +112,11 @@ namespace FabricOwl
         {
             try
             {
-                if (!Path.IsPathRooted(PluginPath))
+                if (!Path.IsPathRooted(PluginFolderName))
                 {
-                    PluginPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + PluginPath;
+                    PluginPath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath), PluginFolderName);
                 }
+
                 foreach (var dll in Directory.GetFiles(PluginPath, "*.dll"))
                 {
                     AssemblyLoadContext assemblyLoadContext = new(dll);
@@ -126,9 +126,11 @@ namespace FabricOwl
                         try
                         {
                             var plugin = Activator.CreateInstance(assembly.GetTypes()[i]) as IPlugin;
-                            if (plugin is IPlugin)
+                            if (plugin is not null)
                             {
                                 Plugins.Add(Path.GetFileNameWithoutExtension(dll), plugin);
+                                // Why continue with this inner loop at this point? Do you 
+                                // expect to have multiple IPlugin impls in the same dll? You should break here, if not.
                             }
                         }
                         catch (MissingMethodException)
@@ -140,7 +142,7 @@ namespace FabricOwl
             }
             catch (Exception ex) when (ex is ArgumentException || ex is DirectoryNotFoundException)
             {
-                // Add log message here
+                // TODO: Add log message here.
             }
         }
     }

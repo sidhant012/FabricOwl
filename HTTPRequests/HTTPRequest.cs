@@ -18,22 +18,26 @@ namespace HTTPRequests
         private readonly string apiVersion72 = "7.2";
         private readonly string clusterURL = "http://localhost:19080";
 
-        private readonly AsyncRetryPolicy retryPolicy = Policy.Handle<HttpRequestException>()
-            .Or<TimeoutException>()
-            .WaitAndRetryAsync(
-                new[]
-                {
-                    TimeSpan.FromSeconds(1),
-                    TimeSpan.FromSeconds(3),
-                });
+        // Don't catch the exceptions that you want Polly to retry.
+        private readonly AsyncRetryPolicy retryPolicy =
+            Policy.Handle<HttpRequestException>()
+                  .Or<TimeoutException>()
+                  .WaitAndRetryAsync(
+                    new[]
+                    {
+                        TimeSpan.FromSeconds(1),
+                        TimeSpan.FromSeconds(3),
+                        TimeSpan.FromSeconds(5),
+                    });
+
         public async Task<List<ICommonSFItems>> GetApplicationsEventList(string startTimeUTC, string endTimeUTC)
         {
             List<ICommonSFItems> inputEvents = new();
+
             // Get Request to return all Applications-related events. The response is list of ApplicationEvent objects.
             // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationseventlist
-            var requestUri = new Uri($"{clusterURL}/EventsStore/Applications/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
-
-            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            Uri requestUri = new($"{clusterURL}/EventsStore/Applications/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
+            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
             var ApplicationConvertEvents = JsonConvert.DeserializeObject<List<ApplicationItem>>(eventList);
             if (ApplicationConvertEvents == null || ApplicationConvertEvents.Count == 0)
             {
@@ -49,11 +53,11 @@ namespace HTTPRequests
         public async Task<List<ICommonSFItems>> GetClusterEventList(string startTimeUTC, string endTimeUTC)
         {
             List<ICommonSFItems> inputEvents = new();
+
             // Get Request to return all Cluster-related events. The response is list of ClusterEvent objects.
             // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getclustereventlist
-            var requestUri = new Uri($"{clusterURL}/EventsStore/Cluster/Events?api-version={apiVersion64}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
-
-            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            Uri requestUri = new($"{clusterURL}/EventsStore/Cluster/Events?api-version={apiVersion64}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
+            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
             var ClusterConvertEvents = JsonConvert.DeserializeObject<List<ClusterItem>>(eventList);
             if (ClusterConvertEvents == null || ClusterConvertEvents.Count == 0)
             {
@@ -63,18 +67,17 @@ namespace HTTPRequests
             {
                 inputEvents.AddRange(ClusterConvertEvents);
             }
-
             return inputEvents;
         }
 
         public async Task<List<ICommonSFItems>> GetNodesEventList(string startTimeUTC, string endTimeUTC)
         {
             List<ICommonSFItems> inputEvents = new();
+
             // Get Request to return all Nodes-related events. The response is list of NodesEvent objects.
             // https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getnodeseventlist
-            var requestUri = new Uri($"{clusterURL}/EventsStore/Nodes/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
-
-            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            Uri requestUri = new($"{clusterURL}/EventsStore/Nodes/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
+            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
             var NodeConvertEvents = JsonConvert.DeserializeObject<List<NodeItem>>(eventList);
             if (NodeConvertEvents == null || NodeConvertEvents.Count == 0)
             {
@@ -84,8 +87,6 @@ namespace HTTPRequests
             {
                 inputEvents.AddRange(NodeConvertEvents);
             }
-
-
             return inputEvents;
         }
 
@@ -95,9 +96,8 @@ namespace HTTPRequests
 
             // Get Request to return all RepairTasks events. The response is list of ReapirTasksEvent objects
             //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getrepairtasklist
-            var requestUri = new Uri($"{clusterURL}/$/GetRepairTaskList?api-version={apiVersion60}");
-
-            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            Uri requestUri = new($"{clusterURL}/$/GetRepairTaskList?api-version={apiVersion60}");
+            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri, 5));
             var RepairConvertEvents = JsonConvert.DeserializeObject<List<RepairItem>>(eventList);
             if(RepairConvertEvents == null || RepairConvertEvents.Count == 0)
             {
@@ -115,11 +115,11 @@ namespace HTTPRequests
         public async Task<List<ICommonSFItems>> GetPartitionsEventList(string startTimeUTC, string endTimeUTC)
         {
             List<ICommonSFItems> inputEvents = new();
+
             //Get Request to return all the Partition events. The response is list of ParitionEvent objects
             //https://learn.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionseventlist
-            var requestUri = new Uri($"{clusterURL}/EventsStore/Partitions/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
-
-            var eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
+            Uri requestUri = new($"{clusterURL}/EventsStore/Partitions/Events?api-version={apiVersion72}&StartTimeUtc={startTimeUTC}&EndTimeUtc={endTimeUTC}");
+            string eventList = await retryPolicy.ExecuteAsync(() => GetEvents(requestUri));
             var PartitionConvertEvents = JsonConvert.DeserializeObject<List<PartitionItem>>(eventList);
             if (PartitionConvertEvents == null || PartitionConvertEvents.Count == 0)
             {
@@ -129,8 +129,6 @@ namespace HTTPRequests
             {
                 inputEvents.AddRange(PartitionConvertEvents);
             }
-
-
             return inputEvents;
         }
 
@@ -144,26 +142,25 @@ namespace HTTPRequests
             return list;
         }
 
-        public static async Task<string> GetEvents(Uri requestUri)
+        public static async Task<string> GetEvents(Uri requestUri, int timeoutSeconds = 10)
         {
-            string data = "";
+            string data = string.Empty;
             try
             {
                 using HttpClient httpClient = new();
-                httpClient.Timeout = TimeSpan.FromSeconds(30);
-
+                httpClient.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
                 var request = await httpClient.GetAsync(requestUri);
-
                 using var webResponse = request.Content;
                 using var webStream = await webResponse.ReadAsStreamAsync();
                 using var reader = new StreamReader(webStream);
                 data = await reader.ReadToEndAsync();
 
                 return data;
-            } catch (Exception e) when (e is HttpRequestException || e is TaskCanceledException || e is TimeoutException)
+            } 
+            catch (Exception e) when (e is ArgumentException or TaskCanceledException)
             {
+                
             }
-
             return data;
         }
 
