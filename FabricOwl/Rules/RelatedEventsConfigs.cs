@@ -8,7 +8,7 @@ namespace FabricOwl.Rules
 {
     public class RelatedEventsConfigs
     {
-        public static Dictionary<string, string> APEmap = new()
+        public readonly static Dictionary<string, string> APEmap = new()
         {
             { "Deactivating application as application contents have changed.", "Stopping code package as application manifest contents have changes due to an app upgrade." },
             { "Deactivating since updating application version failed as part of upgrade.", "Stopping code package as upgrade failed." },

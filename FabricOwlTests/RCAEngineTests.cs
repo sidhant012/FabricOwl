@@ -1,7 +1,6 @@
 ﻿using FabricOwl;
 using FabricOwl.IConfigs;
 using FabricOwl.Rules;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
 namespace FabricOwlTests
@@ -29,7 +28,7 @@ namespace FabricOwlTests
             List<ICommonSFItems> filteredInputEvents = Base.GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
-            string result = "";
+            string result = string.Empty;
             foreach (var simulEvent in simulEvents)
             {
                 result += JsonConvert.SerializeObject(simulEvent, Formatting.Indented);
@@ -47,7 +46,7 @@ namespace FabricOwlTests
             List<ICommonSFItems> filteredInputEvents = Base.GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
-            string result = "";
+            string result = string.Empty;
             foreach (var simulEvent in simulEvents)
             {
                 result += JsonConvert.SerializeObject(simulEvent, Formatting.Indented);
@@ -65,7 +64,7 @@ namespace FabricOwlTests
             List<ICommonSFItems> filteredInputEvents = Base.GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
-            string result = "";
+            string result = string.Empty;
             foreach (var simulEvent in simulEvents)
             {
                 result += JsonConvert.SerializeObject(simulEvent, Formatting.Indented);
@@ -84,7 +83,7 @@ namespace FabricOwlTests
             List<ICommonSFItems> filteredInputEvents = Base.GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
-            string result = "";
+            string result = string.Empty;
             foreach (var simulEvent in simulEvents)
             {
                 result += JsonConvert.SerializeObject(simulEvent, Formatting.Indented);
@@ -102,7 +101,7 @@ namespace FabricOwlTests
             List<ICommonSFItems> filteredInputEvents = Base.GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
-            string result = "";
+            string result = string.Empty;
             foreach (var simulEvent in simulEvents)
             {
                 result += JsonConvert.SerializeObject(simulEvent, Formatting.Indented);
@@ -120,7 +119,7 @@ namespace FabricOwlTests
             List<ICommonSFItems> filteredInputEvents = Base.GetFilteredInputEvents(eventInstanceIds, eventInstanceId, inputEvents);
             List<RCAEvents> simulEvents = new();
             simulEvents = rca.GetSimultaneousEventsForEvent(testGenerateConfig, filteredInputEvents, inputEvents);
-            string result = "";
+            string result = string.Empty;
             foreach (var simulEvent in simulEvents)
             {
                 result += JsonConvert.SerializeObject(simulEvent, Formatting.Indented);

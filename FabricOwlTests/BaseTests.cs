@@ -6,9 +6,6 @@ namespace FabricOwlTests
     [TestClass]
     public class BaseTests : Base
     {
-        // What is this for?
-        readonly Usings test = new();
-
         [TestMethod]
         public void Test_EventDoesNotExist()
         {

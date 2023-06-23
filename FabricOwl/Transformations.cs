@@ -8,10 +8,10 @@ namespace FabricOwl
     {
         public static readonly Dictionary<string, Func<string, string, string>> transformationKey = new()
         {
-            { "trimFront", Transformations.TrimFront },
-            { "trimBack", Transformations.TrimBack },
-            { "prefix", Transformations.Prefix },
-            { "trimWhiteSpace", (parsed, value) => Transformations.TrimWhiteSpace(parsed) }
+            { "trimFront", TrimFront },
+            { "trimBack", TrimBack },
+            { "prefix", Prefix },
+            { "trimWhiteSpace", (parsed, value) => TrimWhiteSpace(parsed) }
         };
 
         public static string TrimFront(string parsed, string value)
