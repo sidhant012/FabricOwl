@@ -117,7 +117,7 @@ namespace FabricOwl
                     PluginPath = Path.Combine(Path.GetDirectoryName(Environment.ProcessPath), PluginFolderName);
                 }
 
-                foreach (var dll in Directory.GetFiles(PluginPath, "*.dll"))
+                foreach (var dll in Directory.EnumerateFiles(PluginPath, "*.dll"))
                 {
                     AssemblyLoadContext assemblyLoadContext = new(dll);
                     Assembly assembly = assemblyLoadContext.LoadFromAssemblyPath(dll);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace FabricOwl.Rules
 {
@@ -22,20 +23,10 @@ namespace FabricOwl.Rules
         };
 
         const string forceKillPrefix = "Aborting since deactivation failed. ";
-        //static readonly string owl = Path.GetFullPath(@"FabricOwl.exe");
-
 
         public static IEnumerable<ConcurrentEventsConfig> GenerateConfig()
         {
             string APE1 = GetResourceStream("FabricOwl.Rules.APE.json");
-
-/*            if((Environment.ProcessPath).Equals(owl))
-            {
-                APE1 = File.ReadAllText(@"Rules\APE.json");
-            } else
-            {
-                APE1 = File.ReadAllText(@"..\FabricOwl\Rules\APE.json");
-            }*/
 
             //convert APE to IEnumerable<RelevantEventsConfig> type through Json DeserializeObject
             var APEConvert = JsonConvert.DeserializeObject<IEnumerable<RelevantEventsConfig>>(APE1);
@@ -51,14 +42,6 @@ namespace FabricOwl.Rules
             }
 
             string rulesConfig = GetResourceStream("FabricOwl.Rules.ExportedRules.json");
-/*            if ((Environment.ProcessPath).Equals(owl))
-            {
-                rulesConfig = File.ReadAllText(@"Rules\ExportedRules.json");
-            }
-            else
-            {
-                rulesConfig = File.ReadAllText(@"..\FabricOwl\Rules\ExportedRules.json");
-            }*/
 
 
             var rules = JsonConvert.DeserializeObject<IEnumerable<ConcurrentEventsConfig>>(rulesConfig);
@@ -73,7 +56,7 @@ namespace FabricOwl.Rules
             return rules;
         }
 
-        // To be revaluated for addition at some point
+        // TOTHNK be revaluated for addition at some point
         public static IEnumerable<ConcurrentEventsConfig> AdditionalUserConfig()
         {
             return null;
@@ -82,14 +65,6 @@ namespace FabricOwl.Rules
         private static RelevantEventsConfig GenerateConfigHelper(string text, string intendedDescription, string expectedPrefix = "")
         {
             string tempGenerate = GetResourceStream("FabricOwl.Rules.ConfigHelperAPE.json");
-/*            if ((Environment.ProcessPath).Equals(owl))
-            {
-                tempGenerate = File.ReadAllText(@"Rules\ConfigHelperAPE.json");
-            }
-            else
-            {
-                tempGenerate = File.ReadAllText(@"..\FabricOwl\Rules\ConfigHelperAPE.json");
-            }*/
 
             var generated = JsonConvert.DeserializeObject<RelevantEventsConfig>(tempGenerate);
 
@@ -108,10 +83,9 @@ namespace FabricOwl.Rules
 
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedResource))
             {
-                using (var reader = new StreamReader(stream))
-                {
-                    result = reader.ReadToEnd();
-                }
+                using var reader = new MemoryStream();
+                stream.CopyTo(reader);
+                result = Encoding.UTF8.GetString(reader.ToArray());
             }
 
             return result;
