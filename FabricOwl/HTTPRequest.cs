@@ -154,7 +154,7 @@ namespace FabricOwl
                 using HttpClient httpClient = new();
                 httpClient.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
 
-                var request = await httpClient.GetAsync(requestUri);
+                using var request = await httpClient.GetAsync(requestUri).ConfigureAwait(false);
 
                 using var webResponse = request.Content;
                 using var webStream = await webResponse.ReadAsStreamAsync();
