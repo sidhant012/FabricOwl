@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -76,18 +77,32 @@ namespace FabricOwl.Rules
             return generated;
         }
 
-        private static string GetResourceStream(string embeddedResource)
+        public static string GetResourceStream(string embeddedResource)
         {
-            string result;
+            string result = string.Empty;
 
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedResource))
+            if (string.IsNullOrEmpty(embeddedResource))
             {
-                using var reader = new MemoryStream();
-                stream.CopyTo(reader);
-                result = Encoding.UTF8.GetString(reader.ToArray());
+                throw new ArgumentException("Embedded resource path cannot be null or empty.", nameof(embeddedResource));
             }
+            else
+            {
+                using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedResource))
+                {
+                    if (stream != null)
+                    {
+                        using var reader = new MemoryStream();
+                        stream.CopyTo(reader);
+                        result = Encoding.UTF8.GetString(reader.ToArray());
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException($"Embedded resource '{embeddedResource}' not found.");
+                    }
+                }
 
-            return result;
-        } 
+                return result;
+            }
+        }
     }
 }
